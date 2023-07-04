@@ -1,0 +1,71 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class #SCRIPTNAME# : MonoBehaviour
+{
+    #region Serialized Fields
+        
+    #NOTRIM#
+
+    #endregion Serialized Fields
+
+    #region Fields
+        
+    #NOTRIM#
+
+    #endregion Fields
+
+    #region Built-Ins / MonoBehaviours
+
+    void Awake()
+    {
+        #NOTRIM#
+    }
+
+    void Start()
+    {
+        #NOTRIM#
+    }
+
+    void Update()
+    {
+        #NOTRIM#
+    }
+
+    void OnEnable()
+    {
+        #NOTRIM#
+    }
+
+    void OnDisable()
+    {
+        #NOTRIM#
+    }
+
+    #endregion Built-Ins / MonoBehaviours
+
+    #region GetSets / Properties
+        
+    #NOTRIM#
+
+    #endregion GetSets / Properties
+
+    #region Game Mechanics / Methods
+        
+    #NOTRIM#
+
+    public void TemplateMethod(bool param)
+    {
+        #NOTRIM#
+    }
+
+    #endregion Game Mechanics / Methods
+
+    #region Overarching Methods / Helpers
+        
+    #NOTRIM#
+
+    #endregion Overarching Methods / Helpers
+}
