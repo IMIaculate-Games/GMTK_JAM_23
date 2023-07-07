@@ -9,7 +9,7 @@ using UnityEngine;
 /// type 3 /// slash characters after you have
 /// written your class or method signature.
 /// </summary>
-public class Flying : Mob
+public class Flying : Mob, Attackable
 {
     /**
         * TODO: General Structure Ideas:
@@ -115,6 +115,11 @@ public class Flying : Mob
     public void TemplateMethod(bool param)
     {
         // TODO: YOUR CODE GOES HERE
+    }
+
+    public override void Attacked(int damage)
+    {
+        throw new NotImplementedException();
     }
 
     #endregion Game Mechanics / Methods
