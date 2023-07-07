@@ -14,6 +14,8 @@ public class UIManagerScript : MonoBehaviour
 
     GameObject sendButton;
 
+    GameObject backButton;
+
     GameObject canvas;
 
     GameObject[] adders;
@@ -27,8 +29,9 @@ public class UIManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startButton = GameObject.Find("/UI Manager/Canvas/New_Wave_Button");
-        sendButton = GameObject.Find("/UI Manager/Canvas/Send_Wave_Button");
+        startButton = GameObject.Find("/UI Manager/Canvas/LowerButtonContainer/New_Wave_Button");
+        sendButton = GameObject.Find("/UI Manager/Canvas/LowerButtonContainer/Send_Wave_Button");
+        backButton = GameObject.Find("/UI Manager/Canvas/LowerButtonContainer/Back_Button");
 
         canvas = GameObject.Find("/UI Manager/Canvas");
         Debug.Log("Found: " + startButton.name);
@@ -41,6 +44,7 @@ public class UIManagerScript : MonoBehaviour
             adders[i].SetActive(false);
         }
         sendButton.SetActive(false);
+        backButton.SetActive(false);
 
 
         hash = new Dictionary<GameObject,int>();
@@ -102,6 +106,7 @@ public class UIManagerScript : MonoBehaviour
         if(shown)
         {
             sendButton.SetActive(true);
+            backButton.SetActive(true);
 
             for (int i = 0; i < adders.Length; i++)
             {
@@ -111,6 +116,7 @@ public class UIManagerScript : MonoBehaviour
         else
         {
             sendButton.SetActive(false);
+            backButton.SetActive(false);
 
             for (int i = 0; i < adders.Length; i++)
             {
