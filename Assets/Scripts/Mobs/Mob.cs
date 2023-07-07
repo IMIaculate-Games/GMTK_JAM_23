@@ -9,7 +9,7 @@ using UnityEngine;
 /// type 3 /// slash characters after you have
 /// written your class or method signature.
 /// </summary>
-public abstract class Mob : MonoBehaviour
+public abstract class Mob : MonoBehaviour, Attackable
 {
 
     /**
@@ -42,6 +42,15 @@ public abstract class Mob : MonoBehaviour
 
     [SerializeField]
     private MobData mobData;
+
+    [SerializeField]
+    protected float effectiveRange, movementSpeed, attackSpeed;
+
+    [SerializeField]
+    protected int unitCost, damagePoints, healthPoints, goldGivenOnKill;
+
+    [SerializeField]
+    protected bool isFlying;
 
     #endregion Serialized Fields
 
@@ -116,10 +125,20 @@ public abstract class Mob : MonoBehaviour
     /// <param name="param">List the parameters.</param>
     /// <returns>Specify what it returns, if it does so.</returns>
 
-    public void TemplateMethod(bool param)
+    public void Initialize()
     {
-        // TODO: YOUR CODE GOES HERE
+        effectiveRange = mobData.EffectiveRange;
+        movementSpeed = mobData.MovementSpeed;
+        attackSpeed = mobData.AttackSpeed;
+        unitCost = mobData.UnitCost;
+        damagePoints = mobData.DamagePoints;
+        healthPoints = mobData.HealthPoints;
+        goldGivenOnKill = mobData.GoldGivenOnKill;
+        isFlying = mobData.IsFlying;
+
     }
+
+    public abstract void Attacked(int damage);
 
     #endregion Game Mechanics / Methods
 

@@ -17,6 +17,6 @@ MonoBehaviour:
   attackSpeed: 1.2
   unitCost: 1
   damagePoints: 5
-  healthPoints: 0
+  healthPoints: 123475
   goldGivenOnKill: 0
   isFlying: 0
