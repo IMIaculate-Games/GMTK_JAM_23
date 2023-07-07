@@ -93,12 +93,14 @@ public class UIManagerScript : MonoBehaviour
     {
         showMenu(false);
         startButton.SetActive(true);
+        hash.Clear();
     }
 
     public void goBack()
     {
         showMenu(false);
         startButton.SetActive(true);
+        hash.Clear();
     }
 
     private void showMenu(bool shown)
