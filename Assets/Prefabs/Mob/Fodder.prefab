@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 91400415965103750}
   - component: {fileID: 6278504135542869318}
   m_Layer: 0
-  m_Name: FodderPrefab
+  m_Name: Fodder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
