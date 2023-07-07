@@ -40,6 +40,10 @@ public enum ElementType
     NONE, PLAYER, ENEMY, CHECKPOINT, GOAL
 }
 
+//public enum MobType
+//{
+//    NONE, FODDER, TANK, SPEEDSTER, FLYING, MAGE, BOSS
+//}
 #endregion
 
 #region Flags
