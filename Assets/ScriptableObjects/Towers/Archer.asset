@@ -16,5 +16,5 @@ MonoBehaviour:
   damage: 100
   cost: 20
   range: 10
-  speed: 10
+  attackSpeed: 3
   sprite: {fileID: 0}

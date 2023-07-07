@@ -16,11 +16,16 @@ public class ArcherTower : Tower
     protected override void Update()
     {
         base.Update();
-        if(inRange.Count > 0 )
+        attackTimer -= Time.deltaTime;
+        if(attackTimer < 0)
         {
-
+            attackTimer = attackSpeed;
+            if (inRange.Count > 0)
+            {
+                getClosestTarget().GetComponent<Attackable>().Attacked(damage, false, true);
+            }
         }
-       
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,16 +39,21 @@ public class ArcherTower : Tower
     // returns the closest gameObject in inRange to this tower
     private GameObject getClosestTarget()
     {
-        GameObject target = inRange[0];
-        float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
-        foreach (GameObject g in inRange)
+        if(inRange.Count > 0)
         {
-            if(minDistace > Vector3.Distance(gameObject.transform.position, g.transform.position))
+            GameObject target = inRange[0];
+            float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
+            foreach (GameObject g in inRange)
             {
-                target = g;
-                minDistace = Vector3.Distance(gameObject.transform.position, g.transform.position);
+                float gDistance = Vector3.Distance(gameObject.transform.position, g.transform.position);
+                if (minDistace > gDistance)
+                {
+                    target = g;
+                    minDistace = gDistance;
+                }
             }
+            return target;
         }
-        return target;
+        return null;
     }
 }
