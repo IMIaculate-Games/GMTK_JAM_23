@@ -62,7 +62,7 @@ public class Fodder : Mob
     // Start is called before the first frame update
     void Start()
     {
-        
+        base.Initialize();
     }
 
     // Update is called once per frame
@@ -115,6 +115,14 @@ public class Fodder : Mob
     public void TemplateMethod(bool param)
     {
         // TODO: YOUR CODE GOES HERE
+    }
+
+    public override void Attacked(int damage)
+    {
+        healthPoints -= damage;
+        if(healthPoints <= 0) Destroy(gameObject);
+
+        //throw new NotImplementedException();
     }
 
     #endregion Game Mechanics / Methods
