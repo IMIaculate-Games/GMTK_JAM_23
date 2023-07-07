@@ -11,7 +11,7 @@ public abstract class Tower : MonoBehaviour
     protected string type;
     protected int damage;
     protected int cost;
-    protected int range;
+    protected float range;
     protected float attackSpeed;
     protected Sprite sprite;
 
@@ -21,6 +21,7 @@ public abstract class Tower : MonoBehaviour
 
     protected float attackTimer;
 
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -30,13 +31,17 @@ public abstract class Tower : MonoBehaviour
         cost = settings.cost;
         range = settings.range;
         attackSpeed = settings.attackSpeed;
+        sprite = settings.sprite;
 
         circleCollider = GetComponent<CircleCollider2D>();
         circleCollider.radius = range;
 
         inRange = new List<GameObject>();
 
-        attackTimer = attackSpeed;
+        attackTimer = 1/attackSpeed;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = sprite;
     }
 
     // Update is called once per frame

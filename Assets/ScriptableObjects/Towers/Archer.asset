@@ -15,6 +15,6 @@ MonoBehaviour:
   type: Archer
   damage: 100
   cost: 20
-  range: 10
-  attackSpeed: 3
+  range: 3
+  attackSpeed: 4
   sprite: {fileID: 0}

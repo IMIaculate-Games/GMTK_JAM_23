@@ -19,7 +19,7 @@ public class ArcherTower : Tower
         attackTimer -= Time.deltaTime;
         if(attackTimer < 0)
         {
-            attackTimer = attackSpeed;
+            attackTimer = 1/attackSpeed;
             if (inRange.Count > 0)
             {
                 getClosestTarget().GetComponent<Attackable>().Attacked(damage, false, true);
@@ -27,20 +27,27 @@ public class ArcherTower : Tower
         }
 
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Entered");
         if (collision.gameObject.GetComponent<Attackable>() != null)
         {
             inRange.Add(collision.gameObject);
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Attackable>() != null)
+        {
+            inRange.Remove(collision.gameObject);
+        }
+    }
+
     // returns the closest gameObject in inRange to this tower
     private GameObject getClosestTarget()
     {
-        if(inRange.Count > 0)
-        {
             GameObject target = inRange[0];
             float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
             foreach (GameObject g in inRange)
@@ -53,7 +60,5 @@ public class ArcherTower : Tower
                 }
             }
             return target;
-        }
-        return null;
     }
 }
