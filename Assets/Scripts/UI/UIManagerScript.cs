@@ -19,6 +19,11 @@ public class UIManagerScript : MonoBehaviour
     GameObject[] adders;
 
 
+    Dictionary<GameObject, int> hash;
+
+    List<GameObject> images;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +42,9 @@ public class UIManagerScript : MonoBehaviour
         }
         sendButton.SetActive(false);
 
+
+        hash = new Dictionary<GameObject,int>();
+        images = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -53,38 +61,65 @@ public class UIManagerScript : MonoBehaviour
     {
         startButton.SetActive(false);
 
-        sendButton.SetActive(true);
-
-        for(int i = 0; i < adders.Length; i++)
-        {
-            adders[i].SetActive(true);
-        }
+        showMenu(true);
     }
 
     public void adderPressed(GameObject button)
     {
+        if(!hash.ContainsKey(button)) 
+        {
+            hash.Add(button, 1);
+        }
+
+        int imgNumber = hash[button];
+
+        hash.Remove(button);
+        hash.Add(button, imgNumber+1);
+
         GameObject addedImage = Instantiate(enemyImage);
+
+        images.Add(addedImage);
 
         addedImage.transform.SetParent(canvas.transform, true);
 
-        addedImage.transform.position = new Vector3(button.transform.position.x, button.transform.position.y - 50, 0);
+        addedImage.transform.position = new Vector3(button.transform.position.x, button.transform.position.y - (50 * imgNumber), 0);
     }
 
     public void sendWave()
     {
-
+        showMenu(false);
+        startButton.SetActive(true);
     }
 
     public void goBack()
     {
-
+        showMenu(false);
+        startButton.SetActive(true);
     }
 
     private void showMenu(bool shown)
     {
         if(shown)
         {
+            sendButton.SetActive(true);
 
+            for (int i = 0; i < adders.Length; i++)
+            {
+                adders[i].SetActive(true);
+            }
+        }
+        else
+        {
+            sendButton.SetActive(false);
+
+            for (int i = 0; i < adders.Length; i++)
+            {
+                adders[i].SetActive(false);
+            }
+
+            foreach(GameObject g in images){
+                Destroy(g);
+            }
         }
     }
 }
