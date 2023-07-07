@@ -10,7 +10,7 @@ public class TowerPlot : MonoBehaviour
     private GameObject tower;
 
     private void OnMouseDown()
-    {
+    { 
         Debug.Log("Build tower here");
     }
 }

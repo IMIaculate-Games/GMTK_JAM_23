@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = LevelManagerScript.main.path[Index];
+        target = LevelManager.main.path[Index];
     }
 
     // Update is called once per frame
@@ -29,13 +29,13 @@ public class EnemyMovement : MonoBehaviour
         {
             Index++;
 
-            if(Index == LevelManagerScript.main.path.Length)
+            if(Index == LevelManager.main.path.Length)
             {
                 Destroy(gameObject);
                 return;
             } else
             {
-                target = LevelManagerScript.main.path[Index];
+                target = LevelManager.main.path[Index];
             }
         }
     }
