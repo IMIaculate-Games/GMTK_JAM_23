@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -34,4 +35,15 @@ public struct KeyMap
     public Key Three { get => three; }
     public Key Four { get => four; }
     public Key[] All { get => new[] { one, two, three, four }; }
+}
+
+[Serializable]
+public struct Wave
+{
+    //[SerializeField] private List<Mob> mobs;
+    [SerializeField] private List<GameObject> mobs;
+
+    //public List<Mob> Mobs { get => mobs; set => mobs = value; }
+    public List<GameObject> Mobs { get => mobs; set => mobs = value; }
+    public int EnemyNumber { get => mobs.Count; }
 }
