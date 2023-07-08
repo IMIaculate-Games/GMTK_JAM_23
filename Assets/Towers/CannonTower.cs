@@ -34,6 +34,8 @@ public class CannonTower : Tower
                 proj.GetComponent<CannonBall>().SetTarget(closestTarget, Random.Range(damage.min, damage.max));
 
                 outExplosion.Play();
+
+                AudioManager.Instance.PlaySfx("CannonOut");
             }
         }
     }

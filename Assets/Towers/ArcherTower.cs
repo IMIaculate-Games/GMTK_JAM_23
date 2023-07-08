@@ -30,6 +30,8 @@ public class ArcherTower : Tower
                 GameObject ar = Instantiate(arrow, animator.transform);
                 ar.GetComponent<Arrow>().SetTarget(closestTarget, Random.Range(damage.min, damage.max));
 
+                AudioManager.Instance.PlaySfx("ArrowOut");
+
                 Vector3 direction = Vector3.Normalize(closestTarget.transform.position - animator.transform.position);
 
                 if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))

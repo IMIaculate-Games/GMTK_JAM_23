@@ -46,6 +46,7 @@ public class Fodder : Mob
     public Rigidbody2D rg;
     private Coroutine fightingCoroutine;
     private float originalSpeed;
+    
 
 
     #endregion Fields
@@ -66,8 +67,8 @@ public class Fodder : Mob
     void Start()
     {
         base.Initialize();
-        
-      
+
+
     }
 
     // Update is called once per frame

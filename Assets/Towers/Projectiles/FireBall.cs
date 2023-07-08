@@ -42,6 +42,7 @@ public class FireBall : MonoBehaviour
                 {
                     destinationObject.GetComponent<Attackable>().Attacked(damage, true, true);
                 }
+                AudioManager.Instance.PlaySfx("IceSpellHit");
                 Destroy(gameObject);
             }
         }

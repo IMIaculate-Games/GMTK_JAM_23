@@ -15,11 +15,16 @@ public class EnemyMovement : MonoBehaviour
 
     private int Index = 0;
 
+    private Animator animator;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         target = LevelManager.main.path[Index];
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,14 +41,42 @@ public class EnemyMovement : MonoBehaviour
             } else
             {
                 target = LevelManager.main.path[Index];
+
+                
+            }
+
+            Vector3 animDirection = Vector3.Normalize(target.position - transform.position);
+            if (Mathf.Abs(animDirection.x) > Mathf.Abs(animDirection.y))
+            {
+                if (animDirection.x < 0)
+                {
+                    //walk left
+                    animator.Play("walk_left");
+                }
+                else
+                {
+                    //walk right
+                    animator.Play("walk_right");
+                }
+            }
+            else
+            {
+                if (animDirection.y < 0)
+                {
+                    //walk down
+                    animator.Play("walk_down");
+                }
+                else
+                {
+                    //walk up
+                    animator.Play("walk_up");
+                }
             }
         }
-    }
 
-    private void FixedUpdate()
-    {
-        Vector2 direction = (target.position - transform.position).normalized;
+        Vector3 direction = Vector3.Normalize(target.position - transform.position);
 
-        myRigidbody.velocity = direction * moveSpeed;
+        myRigidbody.velocity = direction * moveSpeed * Time.deltaTime;
+
     }
 }
