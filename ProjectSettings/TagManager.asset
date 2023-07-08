@@ -45,6 +45,9 @@ TagManager:
   - name: background
     uniqueID: 16990517
     locked: 0
+  - name: path
+    uniqueID: 900442097
+    locked: 0
   - name: ground
     uniqueID: 1851554639
     locked: 0
