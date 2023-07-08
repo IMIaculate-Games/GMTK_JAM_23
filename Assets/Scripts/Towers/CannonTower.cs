@@ -7,8 +7,7 @@ public class CannonTower : Tower
 {
     // Start is called before the first frame update
     private List<GameObject> aoeTargets;
-    [SerializeField]
-    private float aoe = 2;
+    private float aoe = 1;
 
     protected override void Start()
     {
@@ -30,7 +29,6 @@ public class CannonTower : Tower
 
                 // get closest target
                 GameObject closestTarget = getClosestTarget();
-                aoeTargets.Add(closestTarget);
 
                 // get all colliders around the closestTarget in an aoe
                 Collider2D[] targets = Physics2D.OverlapCircleAll(closestTarget.transform.position, aoe);
@@ -50,6 +48,8 @@ public class CannonTower : Tower
                 {
                     target.GetComponent<Attackable>().Attacked(damage, false, true);
                 }
+
+                aoeTargets.Clear();
             }
         }
     }

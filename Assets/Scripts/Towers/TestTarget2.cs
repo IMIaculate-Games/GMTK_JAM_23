@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestTarget : MonoBehaviour, Attackable
+public class TestTarget2 : MonoBehaviour, Attackable
 {
     public void Attacked(int damage, bool isMagic, bool isRanged)
     {
-        Debug.Log("Got attacked! 1");
+        Debug.Log("Got attacked! 2");
     }
 
 
