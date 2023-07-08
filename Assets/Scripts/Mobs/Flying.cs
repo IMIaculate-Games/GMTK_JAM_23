@@ -1,4 +1,4 @@
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +9,7 @@ using UnityEngine;
 /// type 3 /// slash characters after you have
 /// written your class or method signature.
 /// </summary>
-public class Fodder : Mob
+public class Flying : Mob, Attackable
 {
     /**
         * TODO: General Structure Ideas:
@@ -43,8 +43,7 @@ public class Fodder : Mob
 
     #region Fields
 
-    
-    
+    // TODO: Put general non-serialized fields here.
 
     #endregion Fields
 
@@ -63,9 +62,7 @@ public class Fodder : Mob
     // Start is called before the first frame update
     void Start()
     {
-        base.Initialize();
-        Debug.Log(healthPoints);
-      
+        
     }
 
     // Update is called once per frame
@@ -115,16 +112,16 @@ public class Fodder : Mob
     /// <param name="param">List the parameters.</param>
     /// <returns>Specify what it returns, if it does so.</returns>
 
+    public void TemplateMethod(bool param)
+    {
+        // TODO: YOUR CODE GOES HERE
+    }
 
     public override void Attacked(int damage)
     {
-        healthPoints -= damage;
-        if(healthPoints <= 0) Destroy(gameObject);
-
-        //throw new NotImplementedException();
+        throw new NotImplementedException();
     }
 
-    
     #endregion Game Mechanics / Methods
 
     #region Overarching Methods / Helpers

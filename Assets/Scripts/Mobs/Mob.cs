@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// TODO: Provide a summary of your script here.
@@ -41,22 +42,24 @@ public abstract class Mob : MonoBehaviour, Attackable
     //public MobType type;
 
     [SerializeField]
-    private MobData mobData;
+    protected MobData mobData;
 
     [SerializeField]
     protected float effectiveRange, movementSpeed, attackSpeed;
 
     [SerializeField]
-    protected int unitCost, damagePoints, healthPoints, goldGivenOnKill;
+    protected int unitCost, healthPoints, goldGivenOnKill;
 
     [SerializeField]
     protected bool isFlying;
+
+    protected StatRange attackStrength;
 
     #endregion Serialized Fields
 
     #region Fields
 
-    // TODO: Put general non-serialized fields here.
+
 
     #endregion Fields
 
@@ -128,17 +131,23 @@ public abstract class Mob : MonoBehaviour, Attackable
     public void Initialize()
     {
         effectiveRange = mobData.EffectiveRange;
-        movementSpeed = mobData.MovementSpeed;
-        attackSpeed = mobData.AttackSpeed;
+        movementSpeed = Random.Range(mobData.MovementSpeed.min, mobData.MovementSpeed.max);
+        attackSpeed = Random.Range(mobData.AttackSpeed.min, mobData.AttackSpeed.max);
+        healthPoints = Random.Range(mobData.HealthPoints.min, mobData.HealthPoints.max);
         unitCost = mobData.UnitCost;
-        damagePoints = mobData.DamagePoints;
-        healthPoints = mobData.HealthPoints;
         goldGivenOnKill = mobData.GoldGivenOnKill;
         isFlying = mobData.IsFlying;
-
+        attackStrength = mobData.AttackStrength;
     }
 
     public abstract void Attacked(int damage);
+
+    public void Attack(Soldier target)
+    {
+        Attackable enemyUnit = target.gameObject.GetComponent<Attackable>();
+        enemyUnit.Attacked(Random.Range(attackStrength.min, attackStrength.max));
+
+    }
 
     #endregion Game Mechanics / Methods
 
