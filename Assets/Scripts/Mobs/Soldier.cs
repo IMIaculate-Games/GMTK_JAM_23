@@ -1,7 +1,8 @@
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// TODO: Provide a summary of your script here.
@@ -9,8 +10,9 @@ using UnityEngine;
 /// type 3 /// slash characters after you have
 /// written your class or method signature.
 /// </summary>
-public class Fodder : Mob
+public abstract class Soldier : MonoBehaviour, Attackable
 {
+
     /**
         * TODO: General Structure Ideas:
         * 
@@ -35,16 +37,29 @@ public class Fodder : Mob
 
     #region Serialized Fields
 
-    //public MobData data;
+    //private float movementSpeed, effectiveRange, attackSpeed;
+    //private int unitCost, damagePoints, healthPoints,goldGivenOnKill;
+    //public MobType type;
 
+    [SerializeField]
+    protected MobData mobData;
 
+    [SerializeField]
+    protected float effectiveRange, movementSpeed, attackSpeed;
+
+    [SerializeField]
+    protected int unitCost, healthPoints, goldGivenOnKill;
+
+    [SerializeField]
+    protected bool isFlying;
+
+    protected StatRange attackStrength;
 
     #endregion Serialized Fields
 
     #region Fields
 
-    
-    
+
 
     #endregion Fields
 
@@ -57,15 +72,13 @@ public class Fodder : Mob
     void Awake()
     {
         // base.SetUp();
-        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        base.Initialize();
-        Debug.Log(healthPoints);
-      
+        GameObject mobGameObject = GetComponent<GameObject>();
+        
     }
 
     // Update is called once per frame
@@ -115,16 +128,33 @@ public class Fodder : Mob
     /// <param name="param">List the parameters.</param>
     /// <returns>Specify what it returns, if it does so.</returns>
 
+    public void Initialize()
+    {
+        effectiveRange = mobData.EffectiveRange;
+        movementSpeed = Random.Range(mobData.MovementSpeed.min, mobData.MovementSpeed.max);
+        attackSpeed = Random.Range(mobData.AttackSpeed.min, mobData.AttackSpeed.max);
+        healthPoints = Random.Range(mobData.HealthPoints.min, mobData.HealthPoints.max);
+        unitCost = mobData.UnitCost;
+        goldGivenOnKill = mobData.GoldGivenOnKill;
+        isFlying = mobData.IsFlying;
+        attackStrength = mobData.AttackStrength;
+    }
 
-    public override void Attacked(int damage)
+    public void Attacked(int damage)
     {
         healthPoints -= damage;
-        if(healthPoints <= 0) Destroy(gameObject);
+        if (healthPoints <= 0) Destroy(gameObject);
 
         //throw new NotImplementedException();
     }
 
-    
+    public void Attack(Mob target)
+    {
+        Attackable enemyUnit = target.gameObject.GetComponent<Attackable>();
+        enemyUnit.Attacked(Random.Range(attackStrength.min, attackStrength.max));
+
+    }
+
     #endregion Game Mechanics / Methods
 
     #region Overarching Methods / Helpers
