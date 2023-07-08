@@ -11,4 +11,5 @@ public class TowerSettings : ScriptableObject
     public float range;
     public float attackSpeed;
     public Sprite sprite;
+    public GameObject prefab;
 }

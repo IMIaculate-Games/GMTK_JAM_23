@@ -17,4 +17,5 @@ MonoBehaviour:
   cost: 30
   range: 5
   attackSpeed: 0.2
-  sprite: {fileID: 882560404, guid: 6dc1d70fd1ba04a4388ad0e119b5aa38, type: 3}
+  sprite: {fileID: 1246089727, guid: 9a91a176e1ddedd46ad277ea974f1408, type: 3}
+  prefab: {fileID: 6951275188180299512, guid: c63e0b2ae4fd3a4489a6553f7813138c, type: 3}
