@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86febc2a1f9ac0e4f82d2bfbbe6d9194, type: 3}
   m_Name: TankData
   m_EditorClassIdentifier: 
-  movementSpeed: 7
-  attackSpeed: 1.2
-  effectiveRange: 3
-  unitCost: 1
-  damagePoints: 5
-  healthPoints: 0
-  goldGivenOnKill: 0
+  unitCost: 10
+  goldGivenOnKill: 15
+  isFlying: 0
+  healthPoints:
+    min: 50
+    max: 70
+  movementSpeed:
+    min: 8
+    max: 13
+  resistance: 3
+  evasionChance: 0
