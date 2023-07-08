@@ -64,7 +64,7 @@ public class Fodder : Mob
     void Start()
     {
         base.Initialize();
-        Debug.Log(healthPoints);
+        Debug.Log(resistance);
       
     }
 
@@ -116,12 +116,54 @@ public class Fodder : Mob
     /// <returns>Specify what it returns, if it does so.</returns>
 
 
-    public override void Attacked(int damage)
+    public override void Attacked(int damage, bool isMagic, bool isRanged)
     {
-        healthPoints -= damage;
-        if(healthPoints <= 0) Destroy(gameObject);
+
+        if (isMagic)
+        {
+            TakeDamage(damage);
+            return;
+        }
+        if(isRanged && !isMagic)
+        {
+            int evasionChance = Random.Range(1, 101);
+            int critChance = Random.Range(1, 1000);
+            if(evasionChance <= 10)
+            {
+                TakeDamage(0);
+                return;
+            }
+            if(critChance <= 10)
+            {
+                Debug.Log("CRIT!");
+                TakeDamage(damage * 2);
+                return;
+            }
+            TakeDamage(damage - this.resistance);
+            
+        }
+        TakeDamage(damage - resistance);
+        
 
         //throw new NotImplementedException();
+    }
+    public override void TakeDamage(int damage)
+    {
+        if(healthPoints == 0)
+        {
+            Debug.Log("Miss!");
+        }
+        healthPoints -= damage;
+        if (healthPoints <= 0)
+        {
+            UnitDeath();
+        }
+    }
+
+    public override void UnitDeath()
+    {
+        //Optional Death animation lol
+        Destroy(gameObject);
     }
 
     
