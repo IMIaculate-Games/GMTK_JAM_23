@@ -41,9 +41,9 @@ public struct KeyMap
 public struct Wave
 {
     //[SerializeField] private List<Mob> mobs;
-    [SerializeField] private List<GameObject> mobs;
+    [SerializeField] private List<Mob> mobs;
 
     //public List<Mob> Mobs { get => mobs; set => mobs = value; }
-    public List<GameObject> Mobs { get => mobs; set => mobs = value; }
+    public List<Mob> Mobs { get => mobs; set => mobs = value; }
     public int EnemyNumber { get => mobs.Count; }
 }

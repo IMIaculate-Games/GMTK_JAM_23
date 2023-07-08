@@ -5,45 +5,91 @@ using UnityEngine;
 
 public class ArcherTower : Tower
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    private GameObject arrow;
+
+    private Animator animator;
 
     protected override void Start()
     {
         base.Start();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
-        if(inRange.Count > 0 )
+        attackTimer -= Time.deltaTime;
+        if(attackTimer < 0)
         {
+            attackTimer = 1/attackSpeed;
+            if (inRange.Count > 0)
+            {
+                GameObject closestTarget = getClosestTarget();
+                GameObject ar = Instantiate(arrow, animator.transform);
+                ar.GetComponent<Arrow>().SetTarget(closestTarget, damage);
 
+                Vector3 direction = Vector3.Normalize(closestTarget.transform.position - animator.transform.position);
+
+                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+                {
+                    if (direction.x < 0)
+                    {
+                        animator.Play("ArcherAttackLeft");
+                    }
+                    else
+                    {
+                        animator.Play("ArcherAttackRight");
+                    }
+                }
+                else
+                {
+                    if (direction.y < 0)
+                    {
+                        animator.Play("ArcherAttackFront");
+                    }
+                    else
+                    {
+                        animator.Play("ArcherAttackBack");
+                    }
+                }
+            }
         }
-       
-    }
 
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Entered");
         if (collision.gameObject.GetComponent<Attackable>() != null)
         {
             inRange.Add(collision.gameObject);
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Attackable>() != null)
+        {
+            inRange.Remove(collision.gameObject);
+        }
+    }
+
     // returns the closest gameObject in inRange to this tower
     private GameObject getClosestTarget()
     {
-        GameObject target = inRange[0];
-        float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
-        foreach (GameObject g in inRange)
-        {
-            if(minDistace > Vector3.Distance(gameObject.transform.position, g.transform.position))
+            GameObject target = inRange[0];
+            float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
+            foreach (GameObject g in inRange)
             {
-                target = g;
-                minDistace = Vector3.Distance(gameObject.transform.position, g.transform.position);
+                float gDistance = Vector3.Distance(gameObject.transform.position, g.transform.position);
+                if (minDistace > gDistance)
+                {
+                    target = g;
+                    minDistace = gDistance;
+                }
             }
-        }
-        return target;
+            return target;
     }
 }
