@@ -44,20 +44,36 @@ public abstract class Mob : MonoBehaviour, Attackable
     [SerializeField]
     protected MobData mobData;
 
-    [SerializeField]
+    
     protected float effectiveRange, movementSpeed, attackSpeed;
 
-    [SerializeField]
+ 
     protected int unitCost, healthPoints, goldGivenOnKill, resistance, evasionChance;
 
-    [SerializeField]
+   
     protected bool isFlying, isMagic, isRanged;
 
     protected StatRange attackStrength;
+    /*protected bool isFighting;
+    protected Soldier opponentSoldier = null;*/
 
+    /*public void SetIsFighting(bool value)
+    {
+        isFighting = value;
+    }
+    public Soldier GetOpponent()
+    {
+        return opponentSoldier;
+    }
+    public void SetOpponent(Soldier soldier)
+    {
+        opponentSoldier = soldier;
+    }*/
     #endregion Serialized Fields
 
     #region Fields
+
+
 
 
     #endregion Fields
@@ -76,7 +92,7 @@ public abstract class Mob : MonoBehaviour, Attackable
     // Start is called before the first frame update
     void Start()
     {
-        GameObject mobGameObject = GetComponent<GameObject>();
+       
         
     }
 
@@ -129,14 +145,14 @@ public abstract class Mob : MonoBehaviour, Attackable
 
     public void Initialize()
     {
-        effectiveRange = mobData.EffectiveRange;
+        //effectiveRange = mobData.EffectiveRange;
         movementSpeed = Random.Range(mobData.MovementSpeed.min, mobData.MovementSpeed.max);
-        attackSpeed = Random.Range(mobData.AttackSpeed.min, mobData.AttackSpeed.max); //Divide by hundred for more reasonable number
+        //attackSpeed = Random.Range(mobData.AttackSpeed.min, mobData.AttackSpeed.max); //Divide by hundred for more reasonable number
         healthPoints = Random.Range(mobData.HealthPoints.min, mobData.HealthPoints.max);
         unitCost = mobData.UnitCost;
         goldGivenOnKill = mobData.GoldGivenOnKill;
         isFlying = mobData.IsFlying;
-        attackStrength = mobData.AttackStrength;
+        //attackStrength = mobData.AttackStrength;
         resistance = mobData.Resistance;
         evasionChance = mobData.EvasionChance;
     }
@@ -147,15 +163,15 @@ public abstract class Mob : MonoBehaviour, Attackable
 
     public abstract void UnitDeath();
 
-    public void Attack(Soldier target)
+    /*public void Attack(Soldier target)
     {
         Attackable enemyUnit = target.gameObject.GetComponent<Attackable>();
         enemyUnit.Attacked(Random.Range(attackStrength.min, attackStrength.max), isMagic, isRanged);
 
-    }
-    public abstract void OnUnitCollision(Collider2D collision);
+    }*/
+    /*public abstract void OnUnitCollision(Collider2D collision);
 
-    public abstract void initiateCombat(GameObject soldier);
+    public abstract void InitiateCombat(Soldier soldier);*/
 
     #endregion Game Mechanics / Methods
 

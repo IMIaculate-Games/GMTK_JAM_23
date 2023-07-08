@@ -37,8 +37,7 @@ public class MobData : ScriptableObject
 
     #region Serialized Fields
 
-    [SerializeField]
-    protected float effectiveRange;
+
 
     [SerializeField]
     protected int unitCost, goldGivenOnKill;
@@ -47,10 +46,13 @@ public class MobData : ScriptableObject
     protected bool isFlying;
 
     [SerializeField]
-    protected StatRange healthPoints, attackStrength, movementSpeed, attackSpeed;
+    protected StatRange healthPoints, movementSpeed;
     [SerializeField]
     protected int resistance, evasionChance;
     
+ 
+    
+
 
 
 
@@ -63,18 +65,17 @@ public class MobData : ScriptableObject
     #region GetSets / Properties
 
     public StatRange HealthPoints { get => healthPoints; }
-    public StatRange AttackStrength { get => attackStrength; }
+    //public StatRange AttackStrength { get => attackStrength; }
     public StatRange MovementSpeed { get => movementSpeed; }
-    public StatRange AttackSpeed { get => attackSpeed; }
 
-    public float EffectiveRange { get => effectiveRange; }
     public int UnitCost { get => unitCost; }
     
     
     public int GoldGivenOnKill { get => goldGivenOnKill; }
     public bool IsFlying { get => isFlying;}
     public int Resistance { get => resistance; }
-    public int EvasionChance { get => evasionChance; set => evasionChance = value; }
+    public int EvasionChance { get => evasionChance; }
+   
 
 
     #endregion GetSets / Properties

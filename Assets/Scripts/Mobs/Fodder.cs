@@ -43,8 +43,10 @@ public class Fodder : Mob
 
     #region Fields
 
-    
-    
+    public Rigidbody2D rg;
+    private Coroutine fightingCoroutine;
+    private float originalSpeed;
+
 
     #endregion Fields
 
@@ -71,7 +73,12 @@ public class Fodder : Mob
     // Update is called once per frame
     void Update()
     {
-       
+        
+        
+        {
+           
+           
+        }
     }
 
 
@@ -95,6 +102,7 @@ public class Fodder : Mob
     // Since they are very specific, they are down here.
     // The structure is (amost) always the same. Copy-Paste.
 
+    
     /**
     public returnType FieldNameWithCapitalStart
     {
@@ -139,9 +147,7 @@ public class Fodder : Mob
                 Debug.Log("CRIT!");
                 TakeDamage(damage * 2);
                 return;
-            }
-            TakeDamage(damage - this.resistance);
-            
+            }            
         }
         TakeDamage(damage - resistance);
         
@@ -150,9 +156,9 @@ public class Fodder : Mob
     }
     public override void TakeDamage(int damage)
     {
-        if(healthPoints == 0)
+        if(damage == 0)
         {
-            Debug.Log("Miss!");
+            Debug.Log("Missed the" + name +  "!");
         }
         healthPoints -= damage;
         if (healthPoints <= 0)
@@ -167,19 +173,75 @@ public class Fodder : Mob
         Destroy(gameObject);
     }
 
-    public override void OnUnitCollision(Collider2D collision)
+    //public override void OnUnitCollision(Collider2D collision)
+    
+
+
+   /* public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Soldier"))
+        Soldier opponent = collision.gameObject.GetComponent<Soldier>();
+        if (opponent!=null)
         {
-            initiateCombat(collision.gameObject);
+            isFighting = true;
+            originalSpeed = movementSpeed;
+            movementSpeed = 0.0f;
+            Attackable target = collision.gameObject.GetComponent<Attackable>();
+            if (target != null)          
+                fightingCoroutine = StartCoroutine(Attack(target));   
         }
-    }
-
-    public override void initiateCombat(GameObject soldier)
+    }*/
+   /* public override void InitiateCombat(Soldier opponent)
     {
-        Debug.Log("FIGHT!");
-    }
+        //Debug.Log("FIGHT!");
+        if(opponent != null)
+        { 
+            originalSpeed = movementSpeed;
+            movementSpeed = 0.0f;
+            fightingCoroutine = StartCoroutine(Attack(opponent));
+        }
+        
+    }*/
 
+   /* private IEnumerator Attack(Attackable target)
+    {
+        
+
+        yield return new WaitForSeconds(1.0f / (attackSpeed / 10.0f));
+
+        if (target == null)
+            StopAllCoroutines();
+
+        if (target != null)
+        {
+            int damage = Random.Range(attackStrength.min, attackStrength.max);
+            target.Attacked(damage, isMagic, isRanged);
+            StartCoroutine(Attack(target));
+        }
+        else
+        {
+            StopAllCoroutines();
+            opponentSoldier = null;
+            isFighting = false;
+            movementSpeed = originalSpeed;
+            
+        }
+
+    }*/
+
+
+
+    /*public void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("FIGHTING!");
+    }*/
+    /*public void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("FIGHT OVER!");
+        StopCoroutine(fightingCoroutine);
+        isFighting = false;
+        movementSpeed = originalSpeed;
+    }*/
+    
     #endregion Game Mechanics / Methods
 
     #region Overarching Methods / Helpers

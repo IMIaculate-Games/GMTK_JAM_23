@@ -45,6 +45,7 @@ public class Speedster : Mob
 
     // TODO: Put general non-serialized fields here.
 
+
     #endregion Fields
 
     #region Built-Ins / MonoBehaviours
@@ -161,18 +162,7 @@ public class Speedster : Mob
         //Optional Death animation lol
         Destroy(gameObject);
     }
-    public override void OnUnitCollision(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Soldier"))
-        {
-            initiateCombat(collision.gameObject);
-        }
-    }
-
-    public override void initiateCombat(GameObject soldier)
-    {
-        throw new System.NotImplementedException();
-    }
+    
     #endregion Game Mechanics / Methods
 
     #region Overarching Methods / Helpers
