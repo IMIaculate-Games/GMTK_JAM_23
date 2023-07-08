@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MageAttackLeft
+  m_Name: ArcherAttackLeft
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -838479729, guid: fca15b23611ada14fbedf26c9db86c44, type: 3}
+      value: {fileID: 181408123, guid: ed3f556ff3f942642b19339da5400cdd, type: 3}
     - time: 0.11666667
-      value: {fileID: -358567511, guid: fca15b23611ada14fbedf26c9db86c44, type: 3}
+      value: {fileID: 1008308657, guid: ed3f556ff3f942642b19339da5400cdd, type: 3}
     - time: 0.21666667
-      value: {fileID: 680663080, guid: fca15b23611ada14fbedf26c9db86c44, type: 3}
+      value: {fileID: -573621266, guid: ed3f556ff3f942642b19339da5400cdd, type: 3}
     - time: 0.33333334
-      value: {fileID: 839928184, guid: fca15b23611ada14fbedf26c9db86c44, type: 3}
+      value: {fileID: 955371796, guid: ed3f556ff3f942642b19339da5400cdd, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,10 +50,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -838479729, guid: fca15b23611ada14fbedf26c9db86c44, type: 3}
-    - {fileID: -358567511, guid: fca15b23611ada14fbedf26c9db86c44, type: 3}
-    - {fileID: 680663080, guid: fca15b23611ada14fbedf26c9db86c44, type: 3}
-    - {fileID: 839928184, guid: fca15b23611ada14fbedf26c9db86c44, type: 3}
+    - {fileID: 181408123, guid: ed3f556ff3f942642b19339da5400cdd, type: 3}
+    - {fileID: 1008308657, guid: ed3f556ff3f942642b19339da5400cdd, type: 3}
+    - {fileID: -573621266, guid: ed3f556ff3f942642b19339da5400cdd, type: 3}
+    - {fileID: 955371796, guid: ed3f556ff3f942642b19339da5400cdd, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

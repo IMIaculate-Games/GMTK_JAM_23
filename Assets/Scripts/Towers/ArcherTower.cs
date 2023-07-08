@@ -8,9 +8,12 @@ public class ArcherTower : Tower
     [SerializeField]
     private GameObject arrow;
 
+    private Animator animator;
+
     protected override void Start()
     {
         base.Start();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -24,8 +27,33 @@ public class ArcherTower : Tower
             if (inRange.Count > 0)
             {
                 GameObject closestTarget = getClosestTarget();
-                GameObject ar = Instantiate(arrow, transform);
+                GameObject ar = Instantiate(arrow, animator.transform);
                 ar.GetComponent<Arrow>().SetTarget(closestTarget, damage);
+
+                Vector3 direction = Vector3.Normalize(closestTarget.transform.position - animator.transform.position);
+
+                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+                {
+                    if (direction.x < 0)
+                    {
+                        animator.Play("ArcherAttackLeft");
+                    }
+                    else
+                    {
+                        animator.Play("ArcherAttackRight");
+                    }
+                }
+                else
+                {
+                    if (direction.y < 0)
+                    {
+                        animator.Play("ArcherAttackFront");
+                    }
+                    else
+                    {
+                        animator.Play("ArcherAttackBack");
+                    }
+                }
             }
         }
 

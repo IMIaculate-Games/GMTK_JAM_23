@@ -6,7 +6,7 @@ using UnityEngine;
 public class MageTower : Tower
 {
     [SerializeField]
-    Animator animator;
+    private Animator animator;
 
     [SerializeField]
     private GameObject fireball;
@@ -28,9 +28,10 @@ public class MageTower : Tower
             if (inRange.Count > 0)
             {
                 GameObject closestTarget = getClosestTarget();
-                GameObject proj = Instantiate(fireball, transform);
+                GameObject proj = Instantiate(fireball, animator.transform);
                 proj.GetComponent<FireBall>().SetTarget(closestTarget, damage);
-                Vector3 direction = Vector3.Normalize(closestTarget.transform.position - transform.position);
+
+                Vector3 direction = Vector3.Normalize(closestTarget.transform.position - animator.transform.position);
 
                 if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
                 {
