@@ -6,10 +6,14 @@ using UnityEngine;
 public class CannonTower : Tower
 {
     // Start is called before the first frame update
+    private List<GameObject> aoeTargets;
+    [SerializeField]
+    private float aoe = 2;
 
     protected override void Start()
     {
         base.Start();
+        aoeTargets = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -23,10 +27,31 @@ public class CannonTower : Tower
             if (inRange.Count > 0)
             {
                 // still need to change and define attack aoe ...
-                getClosestTarget().GetComponent<Attackable>().Attacked(damage, false, true);
+
+                // get closest target
+                GameObject closestTarget = getClosestTarget();
+                aoeTargets.Add(closestTarget);
+
+                // get all colliders around the closestTarget in an aoe
+                Collider2D[] targets = Physics2D.OverlapCircleAll(closestTarget.transform.position, aoe);
+
+                // check if the targets in the array are attackables
+                foreach (Collider2D target in targets)
+                {
+                    if(target.gameObject.GetComponent<Attackable>() != null)
+                    {
+                        // if attackable, add them to aoe targets
+                        aoeTargets.Add(target.gameObject);
+                    }
+                }
+
+                // attack all the attackables in aoe radius
+                foreach(GameObject target in aoeTargets)
+                {
+                    target.GetComponent<Attackable>().Attacked(damage, false, true);
+                }
             }
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,7 +73,7 @@ public class CannonTower : Tower
 
     // returns the closest gameObject in inRange to this tower
     private GameObject getClosestTarget()
-    {
+    {   
         GameObject target = inRange[0];
         float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
         foreach (GameObject g in inRange)

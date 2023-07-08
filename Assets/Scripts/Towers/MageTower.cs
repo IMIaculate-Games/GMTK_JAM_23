@@ -22,7 +22,6 @@ public class MageTower : Tower
             attackTimer = 1 / attackSpeed;
             if (inRange.Count > 0)
             {
-                // still need to change attack behaviour and number of targets
                 getClosestTarget().GetComponent<Attackable>().Attacked(damage, false, true);
             }
         }
