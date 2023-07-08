@@ -17,4 +17,4 @@ MonoBehaviour:
   cost: 30
   range: 5
   attackSpeed: 0.2
-  sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  sprite: {fileID: 882560404, guid: 6dc1d70fd1ba04a4388ad0e119b5aa38, type: 3}

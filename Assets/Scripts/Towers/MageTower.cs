@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MageTower : Tower
 {
+    [SerializeField]
+    Animator animator;
 
     [SerializeField]
     private GameObject fireball;
@@ -12,6 +14,7 @@ public class MageTower : Tower
     protected override void Start()
     {
         base.Start();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -27,6 +30,29 @@ public class MageTower : Tower
                 GameObject closestTarget = getClosestTarget();
                 GameObject proj = Instantiate(fireball, transform);
                 proj.GetComponent<FireBall>().SetTarget(closestTarget, damage);
+                Vector3 direction = Vector3.Normalize(closestTarget.transform.position - transform.position);
+
+                if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+                {
+                    if(direction.x < 0)
+                    {
+                        animator.Play("MageAttackLeft");
+                    } else
+                    {
+                        animator.Play("MageAttackRight");
+                    }
+                } else
+                {
+                    if (direction.y < 0)
+                    {
+                        animator.Play("MageAttackFront");
+                    }
+                    else
+                    {
+                        animator.Play("MageAttackBack");
+                    }
+                }
+
             }
         }
 

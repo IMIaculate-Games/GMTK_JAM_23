@@ -16,5 +16,5 @@ MonoBehaviour:
   damage: 200
   cost: 50
   range: 2
-  attackSpeed: 1.5
-  sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  attackSpeed: 1.1
+  sprite: {fileID: -2002508275, guid: 6dc1d70fd1ba04a4388ad0e119b5aa38, type: 3}

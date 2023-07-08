@@ -5,7 +5,7 @@ using UnityEngine;
 public class CannonBall : MonoBehaviour
 {
 
-    private float speed = 4;
+    private float speed = 10;
     private Vector3 direction;
     private GameObject destinationObject;
     private Vector3 destination;
