@@ -33,7 +33,7 @@ public class Arrow : MonoBehaviour
             direction = destination - transform.position;
 
             // change rotation based on direction
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             sprite.rotation = Quaternion.Euler(0, 0, angle);
 
             // move towards the direction
