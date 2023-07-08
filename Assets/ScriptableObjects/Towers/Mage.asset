@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7817c0c9d4eee74eba8367febad86b3, type: 3}
-  m_Name: Archer
+  m_Name: Mage
   m_EditorClassIdentifier: 
-  type: Archer
-  damage: 100
-  cost: 20
-  range: 3
-  attackSpeed: 3
-  sprite: {fileID: 8177471321811730583, guid: 87aaca0a643d54397ba969dab4fc8875, type: 3}
+  type: Mage
+  damage: 200
+  cost: 50
+  range: 2
+  attackSpeed: 1.5
+  sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
