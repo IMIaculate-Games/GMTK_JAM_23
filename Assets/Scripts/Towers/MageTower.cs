@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ArcherTower : Tower
+public class MageTower : Tower
 {
     [SerializeField]
-    private GameObject arrow;
-
     private Animator animator;
+
+    [SerializeField]
+    private GameObject fireball;
 
     protected override void Start()
     {
@@ -21,44 +22,43 @@ public class ArcherTower : Tower
     {
         base.Update();
         attackTimer -= Time.deltaTime;
-        if(attackTimer < 0)
+        if (attackTimer < 0)
         {
-            attackTimer = 1/attackSpeed;
+            attackTimer = 1 / attackSpeed;
             if (inRange.Count > 0)
             {
                 GameObject closestTarget = getClosestTarget();
-                GameObject ar = Instantiate(arrow, animator.transform);
-                ar.GetComponent<Arrow>().SetTarget(closestTarget, damage);
+                GameObject proj = Instantiate(fireball, animator.transform);
+                proj.GetComponent<FireBall>().SetTarget(closestTarget, damage);
 
                 Vector3 direction = Vector3.Normalize(closestTarget.transform.position - animator.transform.position);
 
-                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+                if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
                 {
-                    if (direction.x < 0)
+                    if(direction.x < 0)
                     {
-                        animator.Play("ArcherAttackLeft");
-                    }
-                    else
+                        animator.Play("MageAttackLeft");
+                    } else
                     {
-                        animator.Play("ArcherAttackRight");
+                        animator.Play("MageAttackRight");
                     }
-                }
-                else
+                } else
                 {
                     if (direction.y < 0)
                     {
-                        animator.Play("ArcherAttackFront");
+                        animator.Play("MageAttackFront");
                     }
                     else
                     {
-                        animator.Play("ArcherAttackBack");
+                        animator.Play("MageAttackBack");
                     }
                 }
+
             }
         }
 
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Entered");
@@ -79,17 +79,17 @@ public class ArcherTower : Tower
     // returns the closest gameObject in inRange to this tower
     private GameObject getClosestTarget()
     {
-            GameObject target = inRange[0];
-            float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
-            foreach (GameObject g in inRange)
+        GameObject target = inRange[0];
+        float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
+        foreach (GameObject g in inRange)
+        {
+            float gDistance = Vector3.Distance(gameObject.transform.position, g.transform.position);
+            if (minDistace > gDistance)
             {
-                float gDistance = Vector3.Distance(gameObject.transform.position, g.transform.position);
-                if (minDistace > gDistance)
-                {
-                    target = g;
-                    minDistace = gDistance;
-                }
+                target = g;
+                minDistace = gDistance;
             }
-            return target;
+        }
+        return target;
     }
 }

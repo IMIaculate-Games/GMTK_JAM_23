@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7817c0c9d4eee74eba8367febad86b3, type: 3}
-  m_Name: Archer
+  m_Name: Cannon
   m_EditorClassIdentifier: 
-  type: Archer
-  damage: 100
-  cost: 20
-  range: 3
-  attackSpeed: 3
-  sprite: {fileID: -1690221186, guid: 6dc1d70fd1ba04a4388ad0e119b5aa38, type: 3}
-  prefab: {fileID: 6951275188180299512, guid: fefd4f098438bcf42982f35bf12741d8, type: 3}
+  type: Cannon
+  damage: 50
+  cost: 30
+  range: 5
+  attackSpeed: 0.2
+  sprite: {fileID: 1246089727, guid: 9a91a176e1ddedd46ad277ea974f1408, type: 3}
+  prefab: {fileID: 6951275188180299512, guid: c63e0b2ae4fd3a4489a6553f7813138c, type: 3}
