@@ -47,3 +47,9 @@ public struct Wave
     public List<Mob> Mobs { get => mobs; set => mobs = value; }
     public int EnemyNumber { get => mobs.Count; }
 }
+
+[Serializable]
+public struct StatRange
+{
+    public int min, max;
+}

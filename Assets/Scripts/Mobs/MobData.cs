@@ -37,98 +37,53 @@ public class MobData : ScriptableObject
 
     #region Serialized Fields
 
-    [SerializeField]
-    private float effectiveRange, movementSpeed, attackSpeed;
+
 
     [SerializeField]
-    private int unitCost, damagePoints, healthPoints, goldGivenOnKill;
+    protected int unitCost, goldGivenOnKill;
 
     [SerializeField]
-    private bool isFlying;
+    protected bool isFlying;
 
+    [SerializeField]
+    protected StatRange healthPoints, movementSpeed;
+    [SerializeField]
+    protected int resistance, evasionChance;
     
+ 
+    
+
+
+
+
 
     //public MobType type;
 
 
     #endregion Serialized Fields
 
-    #region Fields
-
-    // TODO: Put general non-serialized fields here.
-
-    #endregion Fields
-
-    #region Built-Ins / MonoBehaviours
-
-    // TODO: Put Unity built-in event methods here.
-    // Such as Awake, Start, Update.
-    // But also OnEnable, OnDestroy, OnTrigger and such.
-
-    void Awake()
-    {
-        // base.SetUp();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-      
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void OnEnable()
-    {
-        
-    }
-
-    void OnDisable()
-    {
-        
-    }
-
-    #endregion Built-Ins / MonoBehaviours
-
     #region GetSets / Properties
 
-    // TODO: Put Auto-Properties to your fields here.
-    //
-    // These are used for private fields as getters and setters.
-    // Since they are very specific, they are down here.
-    // The structure is (amost) always the same. Copy-Paste.
+    public StatRange HealthPoints { get => healthPoints; }
+    //public StatRange AttackStrength { get => attackStrength; }
+    public StatRange MovementSpeed { get => movementSpeed; }
 
-    public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
-    public float AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
-    public float EffectiveRange { get => effectiveRange; set => effectiveRange = value; }
-    public int UnitCost { get => unitCost; set => unitCost = value; }
-    public int DamagePoints { get => damagePoints; set => damagePoints = value; }
-    public int HealthPoints { get => healthPoints; set => healthPoints = value; }
-    public int GoldGivenOnKill { get => goldGivenOnKill; set => goldGivenOnKill = value; }
-    public bool IsFlying { get => isFlying; set => isFlying = value; }
+    public int UnitCost { get => unitCost; }
+    
+    
+    public int GoldGivenOnKill { get => goldGivenOnKill; }
+    public bool IsFlying { get => isFlying;}
+    public int Resistance { get => resistance; }
+    public int EvasionChance { get => evasionChance; }
+   
+
 
     #endregion GetSets / Properties
 
     #region Game Mechanics / Methods
 
-    // TODO: Put your game specific mechanics here.
-    // If they can be grouped by functionality, do so.
 
-    /// <summary>
-    /// TODO: Provide a summary for the method
-    /// </summary>
-    /// <param name="param">List the parameters.</param>
-    /// <returns>Specify what it returns, if it does so.</returns>
 
-    public void TemplateMethod(bool param)
-    {
-        // TODO: YOUR CODE GOES HERE
-    }
 
     #endregion Game Mechanics / Methods
 

@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -112,16 +112,56 @@ public class Mage : Mob, Attackable
     /// <param name="param">List the parameters.</param>
     /// <returns>Specify what it returns, if it does so.</returns>
 
-    public void TemplateMethod(bool param)
+    public override void Attacked(int damage, bool isMagic, bool isRanged)
     {
-        // TODO: YOUR CODE GOES HERE
+
+        if (isMagic)
+        {
+            TakeDamage(damage);
+            return;
+        }
+        if (isRanged && !isMagic)
+        {
+            int evasionNumber = Random.Range(1, 101);
+            int critChance = Random.Range(1, 1000);
+            if (evasionNumber <= evasionChance)
+            {
+                TakeDamage(0);
+                return;
+            }
+            if (critChance <= 10)
+            {
+                Debug.Log("CRIT!");
+                TakeDamage(damage * 2);
+                return;
+            }
+            TakeDamage(damage - this.resistance);
+
+        }
+        TakeDamage(damage - resistance);
+
+
+        //throw new NotImplementedException();
+    }
+    public override void TakeDamage(int damage)
+    {
+        if (healthPoints == 0)
+        {
+            Debug.Log("Miss!");
+        }
+        healthPoints -= damage;
+        if (healthPoints <= 0)
+        {
+            UnitDeath();
+        }
     }
 
-    public override void Attacked(int damage)
+    public override void UnitDeath()
     {
-        throw new NotImplementedException();
+        //Optional Death animation lol
+        Destroy(gameObject);
     }
-
+    
     #endregion Game Mechanics / Methods
 
     #region Overarching Methods / Helpers

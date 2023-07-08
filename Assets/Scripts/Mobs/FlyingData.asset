@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86febc2a1f9ac0e4f82d2bfbbe6d9194, type: 3}
   m_Name: FlyingData
   m_EditorClassIdentifier: 
-  effectiveRange: 3
-  movementSpeed: 7
-  attackSpeed: 1.2
   unitCost: 1
-  damagePoints: 5
-  healthPoints: 0
-  goldGivenOnKill: 0
+  goldGivenOnKill: 10
   isFlying: 1
+  healthPoints:
+    min: 26
+    max: 34
+  movementSpeed:
+    min: 15
+    max: 18
+  resistance: 0
+  evasionChance: 20

@@ -1,7 +1,8 @@
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// TODO: Provide a summary of your script here.
@@ -9,8 +10,9 @@ using UnityEngine;
 /// type 3 /// slash characters after you have
 /// written your class or method signature.
 /// </summary>
-public class Speedster : Mob
+public class Soldier : MonoBehaviour, Attackable
 {
+
     /**
         * TODO: General Structure Ideas:
         * 
@@ -35,15 +37,29 @@ public class Speedster : Mob
 
     #region Serialized Fields
 
-    //public MobData data;
+    //private float movementSpeed, effectiveRange, attackSpeed;
+    //private int unitCost, damagePoints, healthPoints,goldGivenOnKill;
+    //public MobType type;
+
+    [SerializeField]
+    protected MobData mobData;
+
+    
+    protected float effectiveRange, movementSpeed, attackSpeed;
+
+ 
+    protected int  healthPoints, goldGivenOnKill, resistance, evasionChance;
 
 
+    protected bool isFlying, isMagic, isRanged, isFighting;
+    private float originalSpeed;
+    protected StatRange attackStrength;
+    private Coroutine fightingCoroutine;
 
     #endregion Serialized Fields
 
     #region Fields
 
-    // TODO: Put general non-serialized fields here.
 
 
     #endregion Fields
@@ -56,13 +72,13 @@ public class Speedster : Mob
 
     void Awake()
     {
-        // base.SetUp();
-        
+       
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        Initialize();
         
     }
 
@@ -113,7 +129,20 @@ public class Speedster : Mob
     /// <param name="param">List the parameters.</param>
     /// <returns>Specify what it returns, if it does so.</returns>
 
-    public override void Attacked(int damage, bool isMagic, bool isRanged)
+    public void Initialize()
+    {
+        //effectiveRange = mobData.EffectiveRange;
+        movementSpeed = Random.Range(mobData.MovementSpeed.min, mobData.MovementSpeed.max);
+        //attackSpeed = Random.Range(mobData.AttackSpeed.min, mobData.AttackSpeed.max);
+        healthPoints = Random.Range(mobData.HealthPoints.min, mobData.HealthPoints.max);
+        goldGivenOnKill = mobData.GoldGivenOnKill;
+        isFlying = mobData.IsFlying;
+        //attackStrength = mobData.AttackStrength;
+        resistance = mobData.Resistance;
+        evasionChance = mobData.EvasionChance;
+    }
+
+    public void Attacked(int damage, bool isMagic, bool isRanged)
     {
 
         if (isMagic)
@@ -136,19 +165,18 @@ public class Speedster : Mob
                 TakeDamage(damage * 2);
                 return;
             }
-            TakeDamage(damage - this.resistance);
-
         }
+        //standard melee hits
         TakeDamage(damage - resistance);
 
 
         //throw new NotImplementedException();
     }
-    public override void TakeDamage(int damage)
+    public  void TakeDamage(int damage)
     {
-        if (healthPoints == 0)
+        if (damage == 0)
         {
-            Debug.Log("Miss!");
+            Debug.Log("Missed the " + name + "!");
         }
         healthPoints -= damage;
         if (healthPoints <= 0)
@@ -157,12 +185,82 @@ public class Speedster : Mob
         }
     }
 
-    public override void UnitDeath()
+    public void UnitDeath()
     {
+        Debug.Log("DEAD!" + name);
         //Optional Death animation lol
         Destroy(gameObject);
     }
-    
+
+    /*public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isFighting) return;
+
+        Mob opponent = collision.gameObject.GetComponent<Mob>();
+
+        if (opponent != null)
+        {
+            isFighting = true;
+            originalSpeed = movementSpeed;
+            movementSpeed = 0.0f;
+
+            if (opponent.GetOpponent() == null)
+            {
+                opponent.SetOpponent(this);
+                opponent.SetIsFighting(true);
+                opponent.InitiateCombat(this);
+                
+            }
+            Attackable target = collision.gameObject.GetComponent<Attackable>();
+            if (target != null)
+                fightingCoroutine = StartCoroutine(Attack(target));
+                   
+                
+                
+        }
+    }*/
+
+    private IEnumerator Attack(Attackable target)
+    {
+       
+        
+        
+        yield return new WaitForSeconds(1.0f / (attackSpeed / 10.0f));
+
+        if (target == null)
+            StopAllCoroutines();
+
+        if (target != null)
+        {
+            int damage = Random.Range(attackStrength.min, attackStrength.max);
+            if (target != null)
+            {
+                target.Attacked(damage, isMagic, isRanged);
+                StartCoroutine(Attack(target));
+            }
+        }
+        else
+        {
+            StopAllCoroutines();
+            isFighting = false;
+            movementSpeed = originalSpeed;
+
+        }
+    }
+
+
+
+    /*public void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("FIGHTING!");
+    }*/
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("FIGHT OVER!");
+        StopCoroutine(fightingCoroutine);
+        isFighting = false;
+        movementSpeed = originalSpeed;
+    }
     #endregion Game Mechanics / Methods
 
     #region Overarching Methods / Helpers
