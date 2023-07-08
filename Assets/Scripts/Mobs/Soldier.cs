@@ -140,8 +140,16 @@ public abstract class Soldier : MonoBehaviour, Attackable
         attackStrength = mobData.AttackStrength;
     }
 
-    public void Attacked(int damage)
+    public void Attacked(int damage, bool isMagic, bool isRanged)
     {
+        if (isRanged)
+        {
+            //Implement Evasion Chance!!
+        }
+        if (isMagic)
+        {
+            //Implement different Damage Calculation for magic damage
+        }
         healthPoints -= damage;
         if (healthPoints <= 0) Destroy(gameObject);
 
@@ -151,7 +159,7 @@ public abstract class Soldier : MonoBehaviour, Attackable
     public void Attack(Mob target)
     {
         Attackable enemyUnit = target.gameObject.GetComponent<Attackable>();
-        enemyUnit.Attacked(Random.Range(attackStrength.min, attackStrength.max));
+        enemyUnit.Attacked(Random.Range(attackStrength.min, attackStrength.max), false, false);
 
     }
 
