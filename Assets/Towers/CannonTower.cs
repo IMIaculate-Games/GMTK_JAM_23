@@ -31,7 +31,7 @@ public class CannonTower : Tower
 
                 GameObject proj = Instantiate(cannonball, transform);
 
-                proj.GetComponent<CannonBall>().SetTarget(closestTarget, damage);
+                proj.GetComponent<CannonBall>().SetTarget(closestTarget, Random.Range(damage.min, damage.max));
 
                 outExplosion.Play();
             }
