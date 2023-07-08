@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ArcherTower : Tower
+public class MageTower : Tower
 {
     // Start is called before the first frame update
 
@@ -17,9 +17,9 @@ public class ArcherTower : Tower
     {
         base.Update();
         attackTimer -= Time.deltaTime;
-        if(attackTimer < 0)
+        if (attackTimer < 0)
         {
-            attackTimer = 1/attackSpeed;
+            attackTimer = 1 / attackSpeed;
             if (inRange.Count > 0)
             {
                 getClosestTarget().GetComponent<Attackable>().Attacked(damage, false, true);
@@ -27,7 +27,7 @@ public class ArcherTower : Tower
         }
 
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Entered");
@@ -48,17 +48,17 @@ public class ArcherTower : Tower
     // returns the closest gameObject in inRange to this tower
     private GameObject getClosestTarget()
     {
-            GameObject target = inRange[0];
-            float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
-            foreach (GameObject g in inRange)
+        GameObject target = inRange[0];
+        float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
+        foreach (GameObject g in inRange)
+        {
+            float gDistance = Vector3.Distance(gameObject.transform.position, g.transform.position);
+            if (minDistace > gDistance)
             {
-                float gDistance = Vector3.Distance(gameObject.transform.position, g.transform.position);
-                if (minDistace > gDistance)
-                {
-                    target = g;
-                    minDistace = gDistance;
-                }
+                target = g;
+                minDistace = gDistance;
             }
-            return target;
+        }
+        return target;
     }
 }

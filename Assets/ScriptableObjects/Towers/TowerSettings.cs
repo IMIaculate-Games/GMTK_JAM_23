@@ -8,7 +8,7 @@ public class TowerSettings : ScriptableObject
     public string type;
     public int damage;
     public int cost;
-    public int range;
-    public int speed;
+    public float range;
+    public float attackSpeed;
     public Sprite sprite;
 }

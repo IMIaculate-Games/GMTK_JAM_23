@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5865038650614106275}
   - component: {fileID: 5534387898915809931}
-  - component: {fileID: 7310801992816224911}
+  - component: {fileID: 1347102643945623989}
   - component: {fileID: 8021021088203514778}
   m_Layer: 0
-  m_Name: Archer
+  m_Name: Mage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &5534387898915809931
 CircleCollider2D:
@@ -69,7 +69,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &7310801992816224911
+--- !u!114 &1347102643945623989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,10 +78,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6951275188180299512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 764b8be3bf5c75c438c5cc6455a2a4b4, type: 3}
+  m_Script: {fileID: 11500000, guid: dfca742a7fbed5f4ea3950bdda203d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: ea32ec78ffd0c5346ac509d469127a16, type: 2}
+  settings: {fileID: 11400000, guid: 307ada59118ac7b428775aaba68662df, type: 2}
 --- !u!212 &8021021088203514778
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8177471321811730583, guid: 87aaca0a643d54397ba969dab4fc8875, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
