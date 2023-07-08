@@ -11,8 +11,10 @@ public class SoldierSpawnOcc : MonoBehaviour
         spawnLocation = sl;
     }
 
-    private void OnDestroy()
+    // this should be called from soldier script before it is destroyed
+    public void unoccupy()
     {
+        // this should be called before the soldier is destroyed
         spawnLocation.gameObject.GetComponent<SpawnLocation>().isOccupied = false;
     }
 }
