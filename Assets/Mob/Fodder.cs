@@ -170,6 +170,7 @@ public class Fodder : Mob
     public override void UnitDeath()
     {
         //Optional Death animation lol
+        DropMoney();
         Destroy(gameObject);
     }
 

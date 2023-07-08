@@ -160,6 +160,7 @@ public class Flying : Mob, Attackable
     public override void UnitDeath()
     {
         //Optional Death animation lol
+        DropMoney();
         Destroy(gameObject);
     }
     

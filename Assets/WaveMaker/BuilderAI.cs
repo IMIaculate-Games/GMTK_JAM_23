@@ -2,75 +2,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BuilderAI : MonoBehaviour
-{
-    #region Serialized Fields
-
+{ 
     [SerializeField] private List<TowerSettings> towers;
     [SerializeField] private List<GameObject> plots;
-    //[SerializeField] private MapData map;
-    //[SerializeField] private EnemyData resources;
-    //[SerializeField] private WaveData waves;
-
-    #endregion Serialized Fields
-
-    #region Fields
 
     private float waitTimer;
 
-    #endregion Fields
-
-    #region Built-Ins / MonoBehaviours
-
-    void Awake()
-    {
-        
-    }
-
     void Start()
     {
-        BuildTower();
+        waitTimer = Random.Range(3, 10);
     }
-
-    
 
     void Update()
     {
-        while (waitTimer > 0)
+        if (waitTimer > 0)
         {
             waitTimer -= Time.deltaTime;
+            return;
         }
         BuildTower();
     }
 
-    void OnEnable()
-    {
-        
-    }
-
-    void OnDisable()
-    {
-        
-    }
-
-    #endregion Built-Ins / MonoBehaviours
-
-    #region GetSets / Properties
-
-
-
-    #endregion GetSets / Properties
-
-    #region Game Mechanics / Methods
-
     private void BuildTower()
     {
         TowerSettings tower = PickTower();
-        if (EnemyData.Gold < tower.cost) return;
+        if (GameData.enemyGold < tower.cost) return;
         GameObject plot = PickPlot();
-        Instantiate(tower.prefab, plot.transform.position, Quaternion.identity, plot.transform);
-        EnemyData.Gold -= tower.cost;
-        Destroy(plot);
-        waitTimer = Random.Range(2, 5);
+        GameObject obj = Instantiate(tower.prefab, plot.transform.position, Quaternion.identity, plot.transform.parent.transform);
+        GameData.enemyGold -= tower.cost;
+        plots.Remove(plot);
+        waitTimer = Random.Range(3, 10);
     }
 
     private GameObject PickPlot()
@@ -82,21 +43,4 @@ public class BuilderAI : MonoBehaviour
     {
         return towers[Random.Range(0, towers.Count)];
     }
-
-    private bool CheckResources()
-    {
-        return false;
-    }
-
-    private void CheckMobs(/*Wave wave*/)
-    {
-    }
-
-    #endregion Game Mechanics / Methods
-
-    #region Overarching Methods / Helpers
-
-
-
-    #endregion Overarching Methods / Helpers
 }

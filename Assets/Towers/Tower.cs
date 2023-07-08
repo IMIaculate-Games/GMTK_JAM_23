@@ -9,7 +9,7 @@ public abstract class Tower : MonoBehaviour
     protected TowerSettings settings;
 
     protected string type;
-    protected int damage;
+    protected StatRange damage;
     protected int cost;
     protected float range;
     protected float attackSpeed;
@@ -27,6 +27,7 @@ public abstract class Tower : MonoBehaviour
     protected virtual void Start()
     {
         type = settings.type;
+
         damage = settings.damage;
         cost = settings.cost;
         range = settings.range;

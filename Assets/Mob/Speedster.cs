@@ -160,6 +160,7 @@ public class Speedster : Mob
     public override void UnitDeath()
     {
         //Optional Death animation lol
+        DropMoney();
         Destroy(gameObject);
     }
     

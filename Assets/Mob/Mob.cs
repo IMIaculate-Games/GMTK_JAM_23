@@ -163,6 +163,12 @@ public abstract class Mob : MonoBehaviour, Attackable
 
     public abstract void UnitDeath();
 
+    protected void DropMoney()
+    {
+        GameData.enemyGold += goldGivenOnKill;
+        Debug.Log(GameData.enemyGold);
+    }
+
     /*public void Attack(Soldier target)
     {
         Attackable enemyUnit = target.gameObject.GetComponent<Attackable>();

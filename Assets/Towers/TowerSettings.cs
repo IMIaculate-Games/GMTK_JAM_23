@@ -6,7 +6,7 @@ using UnityEngine;
 public class TowerSettings : ScriptableObject
 {
     public string type;
-    public int damage;
+    public StatRange damage;
     public int cost;
     public float range;
     public float attackSpeed;

@@ -13,4 +13,14 @@ public class LevelManager : MonoBehaviour
     {
         main = this;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Mob mob = collision.GetComponent<Mob>();
+        if (mob != null)
+        {
+            GameData.enemyLives -= 1;
+            Debug.Log(GameData.enemyLives);
+        }
+    }
 }

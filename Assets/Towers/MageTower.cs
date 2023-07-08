@@ -29,7 +29,7 @@ public class MageTower : Tower
             {
                 GameObject closestTarget = getClosestTarget();
                 GameObject proj = Instantiate(fireball, animator.transform);
-                proj.GetComponent<FireBall>().SetTarget(closestTarget, damage);
+                proj.GetComponent<FireBall>().SetTarget(closestTarget, Random.Range(damage.min, damage.max));
 
                 Vector3 direction = Vector3.Normalize(closestTarget.transform.position - animator.transform.position);
 

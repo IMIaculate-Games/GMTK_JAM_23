@@ -28,7 +28,7 @@ public class ArcherTower : Tower
             {
                 GameObject closestTarget = getClosestTarget();
                 GameObject ar = Instantiate(arrow, animator.transform);
-                ar.GetComponent<Arrow>().SetTarget(closestTarget, damage);
+                ar.GetComponent<Arrow>().SetTarget(closestTarget, Random.Range(damage.min, damage.max));
 
                 Vector3 direction = Vector3.Normalize(closestTarget.transform.position - animator.transform.position);
 
