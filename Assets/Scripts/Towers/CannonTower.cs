@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class CannonTower : Tower
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    private GameObject cannonball;
+
     private List<GameObject> aoeTargets;
     private float aoe = 1;
 
@@ -29,6 +31,11 @@ public class CannonTower : Tower
 
                 // get closest target
                 GameObject closestTarget = getClosestTarget();
+
+                GameObject proj = Instantiate(cannonball, transform);
+
+                proj.GetComponent<CannonBall>().SetTarget(closestTarget);
+
 
                 // get all colliders around the closestTarget in an aoe
                 Collider2D[] targets = Physics2D.OverlapCircleAll(closestTarget.transform.position, aoe);

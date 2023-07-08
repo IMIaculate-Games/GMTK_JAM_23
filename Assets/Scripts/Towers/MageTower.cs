@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class MageTower : Tower
 {
-    // Start is called before the first frame update
+
+    [SerializeField]
+    private GameObject fireball;
 
     protected override void Start()
     {
@@ -22,7 +24,10 @@ public class MageTower : Tower
             attackTimer = 1 / attackSpeed;
             if (inRange.Count > 0)
             {
-                getClosestTarget().GetComponent<Attackable>().Attacked(damage, false, true);
+                GameObject closestTarget = getClosestTarget();
+                GameObject proj = Instantiate(fireball, transform);
+                proj.GetComponent<FireBall>().SetTarget(closestTarget);
+                closestTarget.GetComponent<Attackable>().Attacked(damage, true, true);
             }
         }
 
