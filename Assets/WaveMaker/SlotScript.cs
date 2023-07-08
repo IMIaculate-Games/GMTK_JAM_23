@@ -5,33 +5,41 @@ using UnityEngine.UI;
 
 public class SlotScript : MonoBehaviour
 {
-    public Sprite sprite;
+    Sprite sprite;
     Image image;
 
-
-    GameObject _UIManager;
     UIManagerScript _UIScript;
+
+    bool onSlot = false;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        _UIManager = GameObject.Find("UIManager");
-        _UIScript = GetComponent<UIManagerScript>();
-
         image = GetComponent<Image>();
+
+        _UIScript = GameObject.FindWithTag("UI_Manager").GetComponent<UIManagerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyUp(KeyCode.Mouse0) && onSlot)
+        {
+            sprite = _UIScript.getDraggedMob().GetComponent<Image>().sprite;
+            image.sprite = sprite;
+        }
     }
 
-    public void endDrag()
+    public void enter()
     {
-        Debug.Log("Ended drag");
-        image.sprite = sprite;
+        onSlot = true;
     }
+
+    public void exit()
+    {
+        onSlot = false;
+    }
+
 
 }

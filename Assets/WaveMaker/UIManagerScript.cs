@@ -26,6 +26,8 @@ public class UIManagerScript : MonoBehaviour
 
     GameObject draggedObject;
 
+    GameObject currentlyDraggedMob;
+
     int slotIndex = 0;
 
     int numberOfSlots = 10; //adjustable
@@ -71,10 +73,7 @@ public class UIManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0;i < slots.Length; i++) 
-        {
-            Debug.Log(i + ": " + slots[i].name);
-        }
+
     }
 
 
@@ -83,6 +82,16 @@ public class UIManagerScript : MonoBehaviour
         startButton.SetActive(false);
 
         showMenu(true);
+    }
+
+    public void setDraggedMob(GameObject mob)
+    {
+        currentlyDraggedMob = mob;
+    }
+
+    public GameObject getDraggedMob()
+    {
+        return currentlyDraggedMob;
     }
 
 
@@ -148,6 +157,7 @@ public class UIManagerScript : MonoBehaviour
 
             arraySetActive(slots, false);
 
+            mobDisplays = GameObject.FindGameObjectsWithTag("UI_mobDisplay");
             arraySetActive(mobDisplays, false);
 
         }

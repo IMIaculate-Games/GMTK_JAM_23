@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DragScript : MonoBehaviour
 {
@@ -10,27 +11,27 @@ public class DragScript : MonoBehaviour
 
     Vector2 standardPos;
 
-    GameObject _UIManager;
-    UIManagerScript _UIScript;
+    public UIManagerScript _UIScript;
 
 
     void Start()
     {
         standardPos = transform.position;
-        _UIManager = GameObject.Find("UIManager");
-        _UIScript = GetComponent<UIManagerScript>();
     }
 
     public void mouseHold()
     {
         dragging = true;
+        _UIScript.setDraggedMob(gameObject);
     }
 
     public void mouseRelease()
     {
+        _UIScript.setDraggedMob(null);
+        Debug.Log("Released!");
         dragging = false;
         GameObject display = Instantiate(displayPF, standardPos, Quaternion.identity);
-        display.transform.SetParent(GameObject.Find("UpperButtonContainer").transform);
+        display.transform.SetParent(GameObject.Find("Canvas").transform);
         display.transform.position = standardPos;
 
         gameObject.SetActive(false);
