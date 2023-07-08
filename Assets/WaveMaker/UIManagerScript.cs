@@ -9,6 +9,8 @@ public class UIManagerScript : MonoBehaviour
 
     public GameObject enemyImage;
 
+    public GameObject slot;
+
     //Objects
     GameObject startButton;
 
@@ -20,15 +22,27 @@ public class UIManagerScript : MonoBehaviour
 
     GameObject[] adders;
 
+    GameObject[] mobDisplays;
+
+    GameObject draggedObject;
+
+    int slotIndex = 0;
+
+    int numberOfSlots = 10; //adjustable
 
     Dictionary<GameObject, int> hash;
 
     List<GameObject> images;
 
+    GameObject[] slots;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        hash = new Dictionary<GameObject, int>();
+        images = new List<GameObject>();
+
         startButton = GameObject.Find("/UI Manager/Canvas/LowerButtonContainer/New_Wave_Button");
         sendButton = GameObject.Find("/UI Manager/Canvas/LowerButtonContainer/Send_Wave_Button");
         backButton = GameObject.Find("/UI Manager/Canvas/LowerButtonContainer/Back_Button");
@@ -38,29 +52,32 @@ public class UIManagerScript : MonoBehaviour
 
         adders = GameObject.FindGameObjectsWithTag("Adder_Button");
 
-        //deactivating menu buttons
-        for(int i = 0; i < adders.Length; i++)
+        mobDisplays = GameObject.FindGameObjectsWithTag("UI_mobDisplay");
+
+        //set slots based off of "numberOfSlots"
+        slots = new GameObject[numberOfSlots];
+        for(int i = 0; i < numberOfSlots; i++)
         {
-            adders[i].SetActive(false);
+            GameObject slot = Instantiate(this.slot);
+            slot.transform.SetParent(GameObject.Find("SlotContainer").transform);
+            slots[i] = slot;
         }
-        sendButton.SetActive(false);
-        backButton.SetActive(false);
 
 
-        hash = new Dictionary<GameObject,int>();
-        images = new List<GameObject>();
+        //deactivating menu buttons
+        showMenu(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        for(int i = 0;i < slots.Length; i++) 
+        {
+            Debug.Log(i + ": " + slots[i].name);
+        }
     }
 
 
-    /*
-     * Show new Buttons to create a new wave 
-    */
     public void openMenu()
     {
         startButton.SetActive(false);
@@ -68,6 +85,11 @@ public class UIManagerScript : MonoBehaviour
         showMenu(true);
     }
 
+
+    /*
+     * method is not used!
+     * @param button: GameObject with sprite representing a mob
+     */
     public void adderPressed(GameObject button)
     {
         if(!hash.ContainsKey(button)) 
@@ -103,6 +125,7 @@ public class UIManagerScript : MonoBehaviour
         hash.Clear();
     }
 
+
     private void showMenu(bool shown)
     {
         if(shown)
@@ -110,24 +133,31 @@ public class UIManagerScript : MonoBehaviour
             sendButton.SetActive(true);
             backButton.SetActive(true);
 
-            for (int i = 0; i < adders.Length; i++)
-            {
-                adders[i].SetActive(true);
-            }
+            arraySetActive(adders, true);
+
+            arraySetActive(slots, true);
+
+            arraySetActive(mobDisplays, true);
         }
         else
         {
             sendButton.SetActive(false);
             backButton.SetActive(false);
 
-            for (int i = 0; i < adders.Length; i++)
-            {
-                adders[i].SetActive(false);
-            }
+            arraySetActive(adders, false);
 
-            foreach(GameObject g in images){
-                Destroy(g);
-            }
+            arraySetActive(slots, false);
+
+            arraySetActive(mobDisplays, false);
+
+        }
+    }
+
+    private void arraySetActive(GameObject[] objects, bool active)
+    {
+        for (int i = 0; i < objects.Length; i++)
+        {
+            objects[i].SetActive(active);
         }
     }
 }

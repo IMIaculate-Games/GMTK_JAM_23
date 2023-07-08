@@ -8,6 +8,7 @@ TagManager:
   - Mob
   - Undefined
   - Soldier
+  - UI_SLot
   layers:
   - Default
   - TransparentFX
