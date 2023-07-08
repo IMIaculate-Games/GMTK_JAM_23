@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestTarget : MonoBehaviour, Attackable
+public class TestTarget : MonoBehaviour, Attackable, IsFlying
 {
     public void Attacked(int damage, bool isMagic, bool isRanged)
     {

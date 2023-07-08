@@ -8,9 +8,12 @@ public class CannonTower : Tower
     [SerializeField]
     private GameObject cannonball;
 
+    private ParticleSystem outExplosion;
+
     protected override void Start()
     {
         base.Start();
+        outExplosion = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -29,14 +32,15 @@ public class CannonTower : Tower
                 GameObject proj = Instantiate(cannonball, transform);
 
                 proj.GetComponent<CannonBall>().SetTarget(closestTarget, damage);
+
+                outExplosion.Play();
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Entered");
-        if (collision.gameObject.GetComponent<Attackable>() != null)
+        if (collision.gameObject.GetComponent<Attackable>() != null && collision.gameObject.GetComponent<IsFlying>() != null)
         {
             inRange.Add(collision.gameObject);
         }
@@ -44,7 +48,7 @@ public class CannonTower : Tower
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Attackable>() != null)
+        if (collision.gameObject.GetComponent<Attackable>() != null && collision.gameObject.GetComponent<IsFlying>() != null)
         {
             inRange.Remove(collision.gameObject);
         }
