@@ -24,6 +24,8 @@ public class EnemyHit : MonoBehaviour, Attackable
 
     }
 
-
-
+    public void Attacked(int damage, bool isMagic, bool isRanged)
+    {
+        throw new System.NotImplementedException();
+    }
 }

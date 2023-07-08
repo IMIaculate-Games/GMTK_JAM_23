@@ -38,12 +38,9 @@ public class EnemyMovement : MonoBehaviour
                 target = LevelManagerScript.main.path[Index];
             }
         }
-    }
 
-    private void FixedUpdate()
-    {
         Vector2 direction = (target.position - transform.position).normalized;
 
-        myRigidbody.velocity = direction * moveSpeed;
+        myRigidbody.velocity = direction * moveSpeed * Time.deltaTime;
     }
 }
