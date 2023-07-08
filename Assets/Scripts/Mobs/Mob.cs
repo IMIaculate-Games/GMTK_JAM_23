@@ -48,7 +48,7 @@ public abstract class Mob : MonoBehaviour, Attackable
     protected float effectiveRange, movementSpeed, attackSpeed;
 
     [SerializeField]
-    protected int unitCost, healthPoints, goldGivenOnKill, resistance;
+    protected int unitCost, healthPoints, goldGivenOnKill, resistance, evasionChance;
 
     [SerializeField]
     protected bool isFlying, isMagic, isRanged;
@@ -132,13 +132,14 @@ public abstract class Mob : MonoBehaviour, Attackable
     {
         effectiveRange = mobData.EffectiveRange;
         movementSpeed = Random.Range(mobData.MovementSpeed.min, mobData.MovementSpeed.max);
-        attackSpeed = Random.Range(mobData.AttackSpeed.min, mobData.AttackSpeed.max);
+        attackSpeed = Random.Range(mobData.AttackSpeed.min, mobData.AttackSpeed.max); //Divide by hundred for more reasonable number
         healthPoints = Random.Range(mobData.HealthPoints.min, mobData.HealthPoints.max);
         unitCost = mobData.UnitCost;
         goldGivenOnKill = mobData.GoldGivenOnKill;
         isFlying = mobData.IsFlying;
         attackStrength = mobData.AttackStrength;
         resistance = mobData.Resistance;
+        evasionChance = mobData.EvasionChance;
     }
 
     public abstract void Attacked(int damage, bool isMagic, bool isRanged);
