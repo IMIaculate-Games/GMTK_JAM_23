@@ -117,6 +117,11 @@ public class Boss : Mob
         // TODO: YOUR CODE GOES HERE
     }
 
+    public override void Attacked(int damage)
+    {
+        throw new NotImplementedException();
+    }
+
     #endregion Game Mechanics / Methods
 
     #region Overarching Methods / Helpers
