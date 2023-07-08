@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +5,17 @@ public class BuilderAI : MonoBehaviour
 {
     #region Serialized Fields
 
-    [SerializeField] private MapData map;
-    [SerializeField] private EnemyData resources;
-    [SerializeField] private WaveData waves;
+    [SerializeField] private List<TowerSettings> towers;
+    [SerializeField] private List<GameObject> plots;
+    //[SerializeField] private MapData map;
+    //[SerializeField] private EnemyData resources;
+    //[SerializeField] private WaveData waves;
 
     #endregion Serialized Fields
 
     #region Fields
 
-    private Wave currentWave, nextWave;
+    private float waitTimer;
 
     #endregion Fields
 
@@ -27,19 +28,18 @@ public class BuilderAI : MonoBehaviour
 
     void Start()
     {
-        if (!waves.IsEmpty)
-            currentWave = waves.NextWave;
-
-        CheckMobs(currentWave);
-        CheckResources();
-        BuildTowers();
+        BuildTower();
     }
 
     
 
     void Update()
     {
-
+        while (waitTimer > 0)
+        {
+            waitTimer -= Time.deltaTime;
+        }
+        BuildTower();
     }
 
     void OnEnable()
@@ -62,17 +62,32 @@ public class BuilderAI : MonoBehaviour
 
     #region Game Mechanics / Methods
 
-    private void BuildTowers()
+    private void BuildTower()
     {
-        throw new NotImplementedException();
+        TowerSettings tower = PickTower();
+        if (EnemyData.Gold < tower.cost) return;
+        GameObject plot = PickPlot();
+        Instantiate(tower.prefab, plot.transform.position, Quaternion.identity, plot.transform);
+        Destroy(plot);
+        waitTimer = Random.Range(2, 5);
     }
 
-    private void CheckResources()
+    private GameObject PickPlot()
     {
-        throw new NotImplementedException();
+        return plots[Random.Range(0, plots.Count)];
     }
 
-    private void CheckMobs(Wave wave)
+    private TowerSettings PickTower()
+    {
+        return towers[Random.Range(0, towers.Count)];
+    }
+
+    private bool CheckResources()
+    {
+        return false;
+    }
+
+    private void CheckMobs(/*Wave wave*/)
     {
     }
 
