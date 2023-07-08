@@ -12,10 +12,13 @@ public class FireBall : MonoBehaviour
     private int damage;
 
     private bool hasTarget = false;
-    // Start is called before the first frame update
+    
+    private ParticleSystem magic;
+
     void Start()
     {
-
+        magic = GetComponentInChildren<ParticleSystem>();
+        magic.Play();
     }
 
     // Update is called once per frame
@@ -25,7 +28,7 @@ public class FireBall : MonoBehaviour
         {
             if (destinationObject != null)
             {
-                destination = destinationObject.transform.position;
+                destination = new Vector3(destinationObject.transform.position.x, destinationObject.transform.position.y, transform.position.z);
             }
             // set the direction
             direction = destination - transform.position;

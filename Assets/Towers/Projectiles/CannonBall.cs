@@ -14,7 +14,11 @@ public class CannonBall : MonoBehaviour
     private float aoe = 1;
 
     private bool hasTarget = false;
-    // Start is called before the first frame update
+
+    [SerializeField]
+    private GameObject explosion;
+
+
     void Start()
     {
 
@@ -37,6 +41,7 @@ public class CannonBall : MonoBehaviour
 
             if (Vector3.Distance(transform.position, destination) < 0.05)
             {
+
                 // get all colliders around the closestTarget in an aoe
                 Collider2D[] targets = Physics2D.OverlapCircleAll(destination, aoe);
 
@@ -48,8 +53,9 @@ public class CannonBall : MonoBehaviour
                         target.GetComponent<Attackable>().Attacked(damage, false, true);
                     }
                 }
-
-                Destroy(gameObject);
+               GameObject expl = Instantiate(explosion, transform.position, transform.rotation);
+               expl.GetComponent<ParticleSystem>().Play();
+               Destroy(gameObject);
             }
         }
     }
