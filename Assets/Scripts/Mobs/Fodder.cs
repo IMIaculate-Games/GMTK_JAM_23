@@ -64,15 +64,16 @@ public class Fodder : Mob
     void Start()
     {
         base.Initialize();
-        Debug.Log(resistance);
+        
       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
+
 
     void OnEnable()
     {
@@ -166,7 +167,19 @@ public class Fodder : Mob
         Destroy(gameObject);
     }
 
-    
+    public override void OnUnitCollision(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Soldier"))
+        {
+            initiateCombat(collision.gameObject);
+        }
+    }
+
+    public override void initiateCombat(GameObject soldier)
+    {
+        Debug.Log("FIGHT!");
+    }
+
     #endregion Game Mechanics / Methods
 
     #region Overarching Methods / Helpers

@@ -162,6 +162,14 @@ public class Flying : Mob, Attackable
         //Optional Death animation lol
         Destroy(gameObject);
     }
+    public override void OnUnitCollision(Collider2D collision)
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void initiateCombat(GameObject soldier)
+    {
+        throw new System.NotImplementedException();
+    }
     #endregion Game Mechanics / Methods
 
     #region Overarching Methods / Helpers

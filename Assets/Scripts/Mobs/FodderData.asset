@@ -14,17 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectiveRange: 3
   unitCost: 1
-  goldGivenOnKill: 0
+  goldGivenOnKill: 5
   isFlying: 0
   healthPoints:
-    min: 0
-    max: 0
+    min: 16
+    max: 24
   attackStrength:
-    min: 0
-    max: 0
+    min: 1
+    max: 4
   movementSpeed:
-    min: 0
-    max: 0
+    min: 15
+    max: 18
   attackSpeed:
-    min: 0
-    max: 0
+    min: 90
+    max: 110
+  resistance: 0
+  evasionChance: 10

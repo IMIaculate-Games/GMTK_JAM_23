@@ -60,7 +60,6 @@ public abstract class Mob : MonoBehaviour, Attackable
     #region Fields
 
 
-
     #endregion Fields
 
     #region Built-Ins / MonoBehaviours
@@ -154,6 +153,9 @@ public abstract class Mob : MonoBehaviour, Attackable
         enemyUnit.Attacked(Random.Range(attackStrength.min, attackStrength.max), isMagic, isRanged);
 
     }
+    public abstract void OnUnitCollision(Collider2D collision);
+
+    public abstract void initiateCombat(GameObject soldier);
 
     #endregion Game Mechanics / Methods
 

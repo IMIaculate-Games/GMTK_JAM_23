@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 /// type 3 /// slash characters after you have
 /// written your class or method signature.
 /// </summary>
-public abstract class Soldier : MonoBehaviour, Attackable
+public class Soldier : MonoBehaviour, Attackable
 {
 
     /**
@@ -48,10 +48,10 @@ public abstract class Soldier : MonoBehaviour, Attackable
     protected float effectiveRange, movementSpeed, attackSpeed;
 
     [SerializeField]
-    protected int unitCost, healthPoints, goldGivenOnKill;
+    protected int  healthPoints, goldGivenOnKill, resistance, evasionChance;
 
     [SerializeField]
-    protected bool isFlying;
+    protected bool isFlying, isMagic, isRanged;
 
     protected StatRange attackStrength;
 
@@ -134,10 +134,11 @@ public abstract class Soldier : MonoBehaviour, Attackable
         movementSpeed = Random.Range(mobData.MovementSpeed.min, mobData.MovementSpeed.max);
         attackSpeed = Random.Range(mobData.AttackSpeed.min, mobData.AttackSpeed.max);
         healthPoints = Random.Range(mobData.HealthPoints.min, mobData.HealthPoints.max);
-        unitCost = mobData.UnitCost;
         goldGivenOnKill = mobData.GoldGivenOnKill;
         isFlying = mobData.IsFlying;
         attackStrength = mobData.AttackStrength;
+        resistance = mobData.Resistance;
+        evasionChance = mobData.EvasionChance;
     }
 
     public void Attacked(int damage, bool isMagic, bool isRanged)
