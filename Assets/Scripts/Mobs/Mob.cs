@@ -51,7 +51,7 @@ public abstract class Mob : MonoBehaviour, Attackable
     protected int unitCost, healthPoints, goldGivenOnKill;
 
     [SerializeField]
-    protected bool isFlying;
+    protected bool isFlying, isMagic, isRanged;
 
     protected StatRange attackStrength;
 
@@ -145,7 +145,7 @@ public abstract class Mob : MonoBehaviour, Attackable
     public void Attack(Soldier target)
     {
         Attackable enemyUnit = target.gameObject.GetComponent<Attackable>();
-        enemyUnit.Attacked(Random.Range(attackStrength.min, attackStrength.max));
+        enemyUnit.Attacked(Random.Range(attackStrength.min, attackStrength.max), isMagic, isRanged);
 
     }
 
