@@ -24,27 +24,46 @@ public class BarrackTower : Tower
             if (inRange.Count > 0)
             {
                 GameObject closestTarget = getClosestTarget();
-                // for now spawn soldier at closest tile, eventually let him move there
-                GameObject sol = Instantiate(soldier, closestTarget.transform);
+                if (closestTarget != null)
+                {
+                    closestTarget.GetComponent<SpawnLocation>().isOccupied = true;
+                    GameObject sol = Instantiate(soldier, closestTarget.transform.position, closestTarget.transform.rotation);
+                    sol.GetComponent<SoldierSpawnOcc>().setSpawnLocation(closestTarget);
+                }
             }
         }
-
     }
 
+    // gets the closest spawnlocation that is not occupied, if all nearby locartions are occupied null is returned
     private GameObject getClosestTarget()
     {
-        GameObject target = inRange[0];
-        float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
+        GameObject target = null;
         foreach (GameObject g in inRange)
         {
-            float gDistance = Vector3.Distance(gameObject.transform.position, g.transform.position);
-            if (minDistace > gDistance)
+            if (!g.GetComponent<SpawnLocation>().isOccupied)
             {
-                target = g;
-                minDistace = gDistance;
+                target = g; break;
             }
         }
-        return target;
+
+        if(target != null)
+        {
+            float minDistace = Vector3.Distance(gameObject.transform.position, target.transform.position);
+            foreach (GameObject g in inRange)
+            {
+                if(!g.GetComponent<SpawnLocation>().isOccupied)
+                {
+                    float gDistance = Vector3.Distance(gameObject.transform.position, g.transform.position);
+                    if (minDistace > gDistance)
+                    {
+                        target = g;
+                        minDistace = gDistance;
+                    }
+                } 
+            }
+            return target;
+        }
+        return null;
     }
 
     // get all path tiles nearby
@@ -55,7 +74,10 @@ public class BarrackTower : Tower
         // check if collisions are path
         foreach (Collider2D coll in collisions)
         {
-            // check if the collison object is a spawn location and add it to inRange
+            if(coll.gameObject.GetComponent<SpawnLocation>() != null)
+            {
+                inRange.Add(coll.gameObject);
+            }
         }
     }
 }
