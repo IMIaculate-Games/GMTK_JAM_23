@@ -39,6 +39,30 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: plot
+    uniqueID: 1454932907
+    locked: 0
+  - name: background
+    uniqueID: 16990517
+    locked: 0
+  - name: path
+    uniqueID: 900442097
+    locked: 0
+  - name: ground
+    uniqueID: 1851554639
+    locked: 0
+  - name: grass
+    uniqueID: 751323805
+    locked: 0
+  - name: shadow
+    uniqueID: 1935012703
+    locked: 0
+  - name: forground
+    uniqueID: 889167625
+    locked: 0
+  - name: tower
+    uniqueID: 3678938449
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
