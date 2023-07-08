@@ -7,7 +7,6 @@ public class ArcherTower : Tower
 {
     [SerializeField]
     private GameObject arrow;
-    // Start is called before the first frame update
 
     protected override void Start()
     {
@@ -26,8 +25,7 @@ public class ArcherTower : Tower
             {
                 GameObject closestTarget = getClosestTarget();
                 GameObject ar = Instantiate(arrow, transform);
-                ar.GetComponent<Arrow>().SetTarget(closestTarget);
-                closestTarget.GetComponent<Attackable>().Attacked(damage, false, true);
+                ar.GetComponent<Arrow>().SetTarget(closestTarget, damage);
             }
         }
 

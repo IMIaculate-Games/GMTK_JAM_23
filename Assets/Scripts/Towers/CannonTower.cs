@@ -8,13 +8,9 @@ public class CannonTower : Tower
     [SerializeField]
     private GameObject cannonball;
 
-    private List<GameObject> aoeTargets;
-    private float aoe = 1;
-
     protected override void Start()
     {
         base.Start();
-        aoeTargets = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -27,36 +23,12 @@ public class CannonTower : Tower
             attackTimer = 1 / attackSpeed;
             if (inRange.Count > 0)
             {
-                // still need to change and define attack aoe ...
-
                 // get closest target
                 GameObject closestTarget = getClosestTarget();
 
                 GameObject proj = Instantiate(cannonball, transform);
 
-                proj.GetComponent<CannonBall>().SetTarget(closestTarget);
-
-
-                // get all colliders around the closestTarget in an aoe
-                Collider2D[] targets = Physics2D.OverlapCircleAll(closestTarget.transform.position, aoe);
-
-                // check if the targets in the array are attackables
-                foreach (Collider2D target in targets)
-                {
-                    if(target.gameObject.GetComponent<Attackable>() != null)
-                    {
-                        // if attackable, add them to aoe targets
-                        aoeTargets.Add(target.gameObject);
-                    }
-                }
-
-                // attack all the attackables in aoe radius
-                foreach(GameObject target in aoeTargets)
-                {
-                    target.GetComponent<Attackable>().Attacked(damage, false, true);
-                }
-
-                aoeTargets.Clear();
+                proj.GetComponent<CannonBall>().SetTarget(closestTarget, damage);
             }
         }
     }

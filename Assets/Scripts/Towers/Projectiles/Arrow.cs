@@ -7,7 +7,9 @@ public class Arrow : MonoBehaviour
     
     private float speed = 10;
     private Vector3 direction;
-    private GameObject destination;
+    private GameObject destinationObject;
+    private Vector3 destination;
+    private int damage;
 
     private bool hasTarget = false;
     // Start is called before the first frame update
@@ -20,9 +22,13 @@ public class Arrow : MonoBehaviour
     void Update()
     {
         if (hasTarget)
-        {
+        {   
+            if (destinationObject != null)
+            {
+                destination = destinationObject.transform.position;
+            }
             // set the direction
-            direction = destination.transform.position - transform.position;
+            direction = destination - transform.position;
 
             // change rotation based on direction
             // ...
@@ -30,16 +36,22 @@ public class Arrow : MonoBehaviour
             // move towards the direction
             transform.Translate(Vector3.Normalize(direction) * speed * Time.deltaTime);
 
-            if(Vector3.Distance(transform.position, destination.transform.position) < 0.05)
+            if(Vector3.Distance(transform.position, destination) < 0.05)
             {
+                if ( destinationObject != null )
+                {
+                    destinationObject.GetComponent<Attackable>().Attacked(damage, false, true);
+                }
+
                 Destroy(gameObject);
             }
         }
     }
 
-    public void SetTarget(GameObject g)
+    public void SetTarget(GameObject g, int d)
     {
-        destination = g;
+        destinationObject = g;
         hasTarget = true;
+        damage = d;
     }
 }

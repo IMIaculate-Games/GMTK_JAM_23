@@ -26,8 +26,7 @@ public class MageTower : Tower
             {
                 GameObject closestTarget = getClosestTarget();
                 GameObject proj = Instantiate(fireball, transform);
-                proj.GetComponent<FireBall>().SetTarget(closestTarget);
-                closestTarget.GetComponent<Attackable>().Attacked(damage, true, true);
+                proj.GetComponent<FireBall>().SetTarget(closestTarget, damage);
             }
         }
 
