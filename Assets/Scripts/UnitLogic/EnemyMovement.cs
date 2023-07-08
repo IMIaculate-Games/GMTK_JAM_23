@@ -15,10 +15,12 @@ public class EnemyMovement : MonoBehaviour
 
     private int Index = 0;
 
+    //private List<GameObject> path;
 
     // Start is called before the first frame update
     void Start()
     {
+        //path = MapData.
         target = LevelManagerScript.main.path[Index];
     }
 
