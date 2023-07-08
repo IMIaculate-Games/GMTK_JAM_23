@@ -116,7 +116,7 @@ public class Fodder : Mob
     /// <returns>Specify what it returns, if it does so.</returns>
 
 
-    public override void Attacked(int damage)
+    public override void Attacked(int damage, bool isMagic, bool isRanged)
     {
         healthPoints -= damage;
         if(healthPoints <= 0) Destroy(gameObject);

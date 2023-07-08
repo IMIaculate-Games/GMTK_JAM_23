@@ -140,7 +140,7 @@ public abstract class Mob : MonoBehaviour, Attackable
         attackStrength = mobData.AttackStrength;
     }
 
-    public abstract void Attacked(int damage);
+    public abstract void Attacked(int damage, bool isMagic, bool isRanged);
 
     public void Attack(Soldier target)
     {

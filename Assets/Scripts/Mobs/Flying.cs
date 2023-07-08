@@ -117,7 +117,7 @@ public class Flying : Mob, Attackable
         // TODO: YOUR CODE GOES HERE
     }
 
-    public override void Attacked(int damage)
+    public override void Attacked(int damage, bool isMagic, bool isRanged)
     {
         throw new NotImplementedException();
     }
