@@ -66,9 +66,12 @@ TagManager:
   - name: forground
     uniqueID: 889167625
     locked: 0
-  - name: tower
-    uniqueID: 3678938449
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: tree
+    uniqueID: 3281093967
+    locked: 0
+  - name: tower
+    uniqueID: 3678938449
     locked: 0
