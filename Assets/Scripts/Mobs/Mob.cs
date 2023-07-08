@@ -48,7 +48,7 @@ public abstract class Mob : MonoBehaviour, Attackable
     protected float effectiveRange, movementSpeed, attackSpeed;
 
     [SerializeField]
-    protected int unitCost, healthPoints, goldGivenOnKill;
+    protected int unitCost, healthPoints, goldGivenOnKill, resistance;
 
     [SerializeField]
     protected bool isFlying, isMagic, isRanged;
@@ -138,9 +138,14 @@ public abstract class Mob : MonoBehaviour, Attackable
         goldGivenOnKill = mobData.GoldGivenOnKill;
         isFlying = mobData.IsFlying;
         attackStrength = mobData.AttackStrength;
+        resistance = mobData.Resistance;
     }
 
     public abstract void Attacked(int damage, bool isMagic, bool isRanged);
+
+    public abstract void TakeDamage(int damage);
+
+    public abstract void UnitDeath();
 
     public void Attack(Soldier target)
     {

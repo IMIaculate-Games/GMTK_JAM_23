@@ -48,6 +48,8 @@ public class MobData : ScriptableObject
 
     [SerializeField]
     protected StatRange healthPoints, attackStrength, movementSpeed, attackSpeed;
+    [SerializeField]
+    private int resistance;
 
 
 
@@ -70,7 +72,8 @@ public class MobData : ScriptableObject
     
     public int GoldGivenOnKill { get => goldGivenOnKill; }
     public bool IsFlying { get => isFlying;}
-    
+    public int Resistance { get => resistance; }
+
 
     #endregion GetSets / Properties
 
