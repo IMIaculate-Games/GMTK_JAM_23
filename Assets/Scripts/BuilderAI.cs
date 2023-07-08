@@ -67,7 +67,7 @@ public class BuilderAI : MonoBehaviour
         TowerSettings tower = PickTower();
         if (EnemyData.Gold < tower.cost) return;
         GameObject plot = PickPlot();
-        Instantiate(tower.prefab, plot.transform.position, Quaternion.identity, plot.transform);
+        //Instantiate(tower.prefab, plot.transform.position, Quaternion.identity, plot.transform);
         Destroy(plot);
         waitTimer = Random.Range(2, 5);
     }
