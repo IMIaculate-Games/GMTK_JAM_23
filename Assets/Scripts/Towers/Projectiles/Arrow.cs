@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    
-    private float speed = 10;
+    [SerializeField]
+    Transform sprite;
+
+    private float speed = 15;
     private Vector3 direction;
     private GameObject destinationObject;
     private Vector3 destination;
@@ -31,7 +33,8 @@ public class Arrow : MonoBehaviour
             direction = destination - transform.position;
 
             // change rotation based on direction
-            // ...
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
+            sprite.rotation = Quaternion.Euler(0, 0, angle);
 
             // move towards the direction
             transform.Translate(Vector3.Normalize(direction) * speed * Time.deltaTime);
