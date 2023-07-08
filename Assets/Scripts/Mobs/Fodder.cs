@@ -126,9 +126,9 @@ public class Fodder : Mob
         }
         if(isRanged && !isMagic)
         {
-            int evasionChance = Random.Range(1, 101);
+            int evasionNumber = Random.Range(1, 101);
             int critChance = Random.Range(1, 1000);
-            if(evasionChance <= 10)
+            if(evasionNumber <= evasionChance)
             {
                 TakeDamage(0);
                 return;
