@@ -154,6 +154,13 @@ public class UIManagerScript : MonoBehaviour
         showMenu(false);
         mobSpawner.LoadMobs(mobs);
         Time.timeScale = 1;
+
+        currentSlotIndex = 0;
+        for (int i = 0; i < mobs.Length; i++)
+        {
+            mobs[i] = "";
+            slots[i].gameObject.GetComponent<Image>().sprite = emptySprite;
+        }
     }
 
     public void goBack()
