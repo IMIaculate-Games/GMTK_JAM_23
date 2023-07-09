@@ -69,7 +69,10 @@ public class MobSpawner : MonoBehaviour
     {
         foreach (string mob in mobList)
         {
-            mobs.Enqueue(mob);
+            if(mob != "")
+            {
+                mobs.Enqueue(mob);
+            }
         }
         mobsLoaded = true;
     }
