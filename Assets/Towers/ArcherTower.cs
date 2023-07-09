@@ -10,6 +10,7 @@ public class ArcherTower : Tower
 
     private Animator animator;
 
+
     protected override void Start()
     {
         base.Start();
@@ -19,11 +20,12 @@ public class ArcherTower : Tower
     // Update is called once per frame
     protected override void Update()
     {
+
         base.Update();
         attackTimer -= Time.deltaTime;
-        if(attackTimer < 0)
+        if (attackTimer < 0)
         {
-            attackTimer = 1/attackSpeed;
+            attackTimer = 1 / attackSpeed;
             if (inRange.Count > 0)
             {
                 GameObject closestTarget = getClosestTarget();
@@ -58,11 +60,14 @@ public class ArcherTower : Tower
                 }
             }
         }
+        
+        
 
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.GetComponent<Attackable>() != null)
         {
             inRange.Add(collision.gameObject);
