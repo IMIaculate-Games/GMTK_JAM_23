@@ -39,6 +39,9 @@ public class UIManagerScript : MonoBehaviour
 
     string[] mobs;
 
+    [SerializeField]
+    private MobSpawner mobSpawner;
+
     int currentSlotIndex = 0;
 
 
@@ -147,18 +150,13 @@ public class UIManagerScript : MonoBehaviour
     public void sendWave()
     {
         showMenu(false);
-        for(int i = 0; i < mobs.Length; i++)
-        {
-            print(mobs[i]);
-        }
-        
-        hash.Clear();
+        mobSpawner.LoadMobs(mobs);
     }
 
     public void goBack()
     {
         showMenu(false);
-        hash.Clear();
+        
     }
 
 
