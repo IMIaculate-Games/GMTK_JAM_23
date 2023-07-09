@@ -39,6 +39,7 @@ public class LevelManager : MonoBehaviour
                 
                 int index = SceneManager.GetActiveScene().buildIndex;
                 index++;
+                GameData.Reset();
                 index = Mathf.Clamp(index,  GameData.MAIN_MENU, GameData.GAME_OVER);
                 SceneManager.LoadScene(index);
             }
