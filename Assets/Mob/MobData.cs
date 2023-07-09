@@ -47,6 +47,7 @@ public class MobData : ScriptableObject
 
     [SerializeField]
     protected StatRange healthPoints, movementSpeed;
+
     [SerializeField]
     protected int resistance, evasionChance;
     

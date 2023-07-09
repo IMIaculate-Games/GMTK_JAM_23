@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
             if (GameData.enemyLives <= 0)
             {
                 Win.SetActive(true);
+                
                 int index = SceneManager.GetActiveScene().buildIndex;
                 index = Mathf.Clamp(index++, GameData.MAIN_MENU, GameData.GAME_OVER);
                 SceneManager.LoadScene(index);

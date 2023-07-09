@@ -84,6 +84,8 @@ public class UIManagerScript : MonoBehaviour
 
     public void addMobToList(string mob)
     {
+        if (GameData.gold <= 0 || sumCosts >= GameData.gold) return;
+
         if (currentSlotIndex < slots.Length)
         {
             mobs[currentSlotIndex] = mob;
@@ -93,7 +95,7 @@ public class UIManagerScript : MonoBehaviour
         switch (mob)
         {
             case "goblin":
-                if (currentSlotIndex < slots.Length && GameData.gold >= goblinData.UnitCost && GameData.gold >= sumCosts)
+                if (currentSlotIndex < slots.Length && GameData.gold >= goblinData.UnitCost)
                 {
                     sumCosts += goblinData.UnitCost;
                     slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = goblinSprite;
@@ -101,7 +103,7 @@ public class UIManagerScript : MonoBehaviour
                 }
                 break;
             case "wolf":
-                if (currentSlotIndex < slots.Length && GameData.gold >= wolfData.UnitCost && GameData.gold >= sumCosts)
+                if (currentSlotIndex < slots.Length && GameData.gold >= wolfData.UnitCost)
                 {
                     sumCosts += wolfData.UnitCost;
                     slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = wolfSprite;
@@ -109,7 +111,7 @@ public class UIManagerScript : MonoBehaviour
                 }
                 break;
             case "slime":
-                if (currentSlotIndex < slots.Length && GameData.gold >= slimeData.UnitCost && GameData.gold >= sumCosts)
+                if (currentSlotIndex < slots.Length && GameData.gold >= slimeData.UnitCost)
                 {
                     sumCosts += slimeData.UnitCost;
                     slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = slimeSprite;
@@ -118,7 +120,7 @@ public class UIManagerScript : MonoBehaviour
                 break;
 
             case "flying":
-                if (currentSlotIndex < slots.Length && GameData.gold >= flyingData.UnitCost && GameData.gold >= sumCosts)
+                if (currentSlotIndex < slots.Length && GameData.gold >= flyingData.UnitCost)
                 {
                     sumCosts += flyingData.UnitCost;
                     slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = flyingSprite;
@@ -128,6 +130,7 @@ public class UIManagerScript : MonoBehaviour
             default:
 
                 break;
+                Debug.Log(GameData.gold);
         }
     }
 
@@ -138,6 +141,7 @@ public class UIManagerScript : MonoBehaviour
             if (currentSlotIndex != 0)
             {
                 currentSlotIndex--;
+                sumCosts = 0;
             }
             mobs[currentSlotIndex] = "";
             slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = emptySprite;  
