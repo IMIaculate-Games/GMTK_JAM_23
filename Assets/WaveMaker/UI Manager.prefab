@@ -634,7 +634,7 @@ Transform:
   - {fileID: 8953274888384322782}
   - {fileID: 3736154302117369029}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1977846007219906577
 MonoBehaviour:
@@ -655,7 +655,12 @@ MonoBehaviour:
   slimeSprite: {fileID: 21300000, guid: f80486c680060554f91cb00aeb61308d, type: 3}
   flyingSprite: {fileID: 21300000, guid: 214659d6b26e9fa41a8f53af05265e56, type: 3}
   emptySprite: {fileID: 21300000, guid: 7b777913897fd5c4bb6e0f24b643a8ab, type: 3}
+  goblinData: {fileID: 11400000, guid: 1ce1c6f9e09b62b45baa614fda710401, type: 2}
+  wolfData: {fileID: 11400000, guid: 10f13362c9be67245a5258b3b70c71a4, type: 2}
+  slimeData: {fileID: 11400000, guid: ce6902e22c691eb44a27f4aac464655e, type: 2}
+  flyingData: {fileID: 11400000, guid: 1dd51dbf6136ddb4d98d50a6f090a2cd, type: 2}
   mobSpawner: {fileID: 4432251783718838668}
+  sumCosts: 0
 --- !u!1 &3045910041058630205
 GameObject:
   m_ObjectHideFlags: 0
