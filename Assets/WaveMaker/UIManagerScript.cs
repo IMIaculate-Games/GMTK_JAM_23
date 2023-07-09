@@ -143,6 +143,8 @@ public class UIManagerScript : MonoBehaviour
     {
         startButton.SetActive(false);
 
+        Time.timeScale = 0;
+
         showMenu(true);
     }
 
@@ -151,12 +153,14 @@ public class UIManagerScript : MonoBehaviour
     {
         showMenu(false);
         mobSpawner.LoadMobs(mobs);
+        Time.timeScale = 1;
     }
 
     public void goBack()
     {
         showMenu(false);
-        
+        Time.timeScale = 1;
+
     }
 
 
