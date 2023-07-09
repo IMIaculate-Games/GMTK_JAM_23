@@ -17,7 +17,7 @@ public class CannonTower : Tower
         base.Start();
         outExplosion = GetComponentInChildren<ParticleSystem>();
 
-        cannonSpawnLocation = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        cannonSpawnLocation = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z - 0.5f);
     }
 
     // Update is called once per frame
@@ -46,7 +46,7 @@ public class CannonTower : Tower
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Attackable>() != null && collision.gameObject.GetComponent<IsFlying>() != null)
+        if (collision.gameObject.GetComponent<Attackable>() != null && collision.gameObject.GetComponent<IsFlying>() == null)
         {
             inRange.Add(collision.gameObject);
         }
@@ -54,7 +54,7 @@ public class CannonTower : Tower
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Attackable>() != null && collision.gameObject.GetComponent<IsFlying>() != null)
+        if (collision.gameObject.GetComponent<Attackable>() != null && collision.gameObject.GetComponent<IsFlying>() == null)
         {
             inRange.Remove(collision.gameObject);
         }

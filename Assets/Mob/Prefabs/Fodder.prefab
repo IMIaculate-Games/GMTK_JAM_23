@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4805935606005391237}
   - component: {fileID: 91400415965103750}
   - component: {fileID: 6278504135542869318}
-  - component: {fileID: 3593989034374998897}
   - component: {fileID: 6765460726149286384}
   - component: {fileID: 4482731993893267353}
   - component: {fileID: 8527252894172770409}
+  - component: {fileID: 8323974000940235105}
   m_Layer: 0
   m_Name: Fodder
   m_TagString: Mob
@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &91400415965103750
 CircleCollider2D:
@@ -71,7 +71,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.5
 --- !u!114 &6278504135542869318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,34 +85,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobData: {fileID: 11400000, guid: ce6902e22c691eb44a27f4aac464655e, type: 2}
-  rg: {fileID: 3593989034374998897}
---- !u!50 &3593989034374998897
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4150039887714199427}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!95 &6765460726149286384
 Animator:
   serializedVersion: 5
@@ -198,6 +170,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4dbf3bb5e73b043ac605390966157e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedFactor: 10
-  moveSpeed: 2
   mob: {fileID: 6278504135542869318}
+--- !u!50 &8323974000940235105
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150039887714199427}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

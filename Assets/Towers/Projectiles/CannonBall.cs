@@ -48,7 +48,7 @@ public class CannonBall : MonoBehaviour
                 // check if the targets in the array are attackables
                 foreach (Collider2D target in targets)
                 {
-                    if (target.gameObject.GetComponent<Attackable>() != null)
+                    if (target.gameObject.GetComponent<Attackable>() != null && target.gameObject.GetComponent<IsFlying>() == null)
                     {
                         target.GetComponent<Attackable>().Attacked(damage, false, true);
                     }
