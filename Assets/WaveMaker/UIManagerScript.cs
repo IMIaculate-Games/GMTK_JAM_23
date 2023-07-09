@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManagerScript : MonoBehaviour
 {
     //Prefabs
     public GameObject generalButton;
 
-    public GameObject enemyImage;
+    public GameObject deleteButton;
 
-    public GameObject slot;
+    public Sprite goblinSprite;
+
+    public Sprite wolfSprite;
+
+    public Sprite emptySprite;
 
     //Objects
     GameObject startButton;
@@ -20,23 +25,15 @@ public class UIManagerScript : MonoBehaviour
 
     GameObject canvas;
 
-    GameObject[] adders;
-
-    GameObject[] mobDisplays;
-
-    GameObject draggedObject;
-
-    GameObject currentlyDraggedMob;
-
-    int slotIndex = 0;
-
-    int numberOfSlots = 10; //adjustable
-
     Dictionary<GameObject, int> hash;
+
+    GameObject[] adders;
 
     List<GameObject> images;
 
     GameObject[] slots;
+
+    int currentSlotIndex = 0;
 
 
     // Start is called before the first frame update
@@ -50,29 +47,53 @@ public class UIManagerScript : MonoBehaviour
         backButton = GameObject.Find("/UI Manager/Canvas/LowerButtonContainer/Back_Button");
 
         canvas = GameObject.Find("/UI Manager/Canvas");
-        Debug.Log("Found: " + startButton.name);
 
         adders = GameObject.FindGameObjectsWithTag("Adder_Button");
 
-        mobDisplays = GameObject.FindGameObjectsWithTag("UI_mobDisplay");
-
-        //set slots based off of "numberOfSlots"
-        slots = new GameObject[numberOfSlots];
-        for(int i = 0; i < numberOfSlots; i++)
-        {
-            GameObject slot = Instantiate(this.slot);
-            slot.transform.SetParent(GameObject.Find("SlotContainer").transform);
-            slots[i] = slot;
-        }
+        slots = GameObject.FindGameObjectsWithTag("UI_SLot");
 
 
         //deactivating menu buttons
         showMenu(false);
     }
 
+
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    public void addMobToList(string mob)
+    {
+        switch (mob)
+        {
+            case "goblin":
+                if (currentSlotIndex < slots.Length)
+                { 
+                    slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = goblinSprite;
+                    currentSlotIndex++;
+                }
+                break;
+            case "wolf":
+
+                break;
+            default:
+
+                break;
+        }
+    }
+
+    public void delete()
+    {
+        if(currentSlotIndex >= 0)
+        {
+            slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = emptySprite;
+            if(currentSlotIndex != 0)
+            {
+                currentSlotIndex--;
+            }
+        }
 
     }
 
@@ -84,53 +105,16 @@ public class UIManagerScript : MonoBehaviour
         showMenu(true);
     }
 
-    public void setDraggedMob(GameObject mob)
-    {
-        currentlyDraggedMob = mob;
-    }
-
-    public GameObject getDraggedMob()
-    {
-        return currentlyDraggedMob;
-    }
-
-
-    /*
-     * method is not used!
-     * @param button: GameObject with sprite representing a mob
-     */
-    public void adderPressed(GameObject button)
-    {
-        if(!hash.ContainsKey(button)) 
-        {
-            hash.Add(button, 1);
-        }
-
-        int imgNumber = hash[button];
-
-        hash.Remove(button);
-        hash.Add(button, imgNumber+1);
-
-        GameObject addedImage = Instantiate(enemyImage);
-
-        images.Add(addedImage);
-
-        addedImage.transform.SetParent(canvas.transform, true);
-
-        addedImage.transform.position = new Vector3(button.transform.position.x, button.transform.position.y - (50 * imgNumber), 0);
-    }
 
     public void sendWave()
     {
         showMenu(false);
-        startButton.SetActive(true);
         hash.Clear();
     }
 
     public void goBack()
     {
         showMenu(false);
-        startButton.SetActive(true);
         hash.Clear();
     }
 
@@ -139,6 +123,9 @@ public class UIManagerScript : MonoBehaviour
     {
         if(shown)
         {
+            startButton.SetActive(false);
+
+            deleteButton.SetActive(true);
             sendButton.SetActive(true);
             backButton.SetActive(true);
 
@@ -146,10 +133,12 @@ public class UIManagerScript : MonoBehaviour
 
             arraySetActive(slots, true);
 
-            arraySetActive(mobDisplays, true);
         }
         else
         {
+            startButton.SetActive(true);
+
+            deleteButton.SetActive(false);
             sendButton.SetActive(false);
             backButton.SetActive(false);
 
@@ -157,8 +146,6 @@ public class UIManagerScript : MonoBehaviour
 
             arraySetActive(slots, false);
 
-            mobDisplays = GameObject.FindGameObjectsWithTag("UI_mobDisplay");
-            arraySetActive(mobDisplays, false);
 
         }
     }
