@@ -1245,7 +1245,7 @@ GameObject:
   - component: {fileID: 7106941600686401501}
   - component: {fileID: 6529466251600669208}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PauseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1366,13 +1366,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
+      - m_Target: {fileID: 558434150925452573}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: PauseGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2116,6 +2116,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6059558779101728038, guid: 4b55c29f99a8f93489474ba1bc05be90, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 558434150925452571}
     - target: {fileID: 8322165077189581194, guid: 4b55c29f99a8f93489474ba1bc05be90, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2163,3 +2167,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6059558779101728032, guid: 4b55c29f99a8f93489474ba1bc05be90, type: 3}
   m_PrefabInstance: {fileID: 6028090624172787771}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &558434150925452573 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6059558779101728038, guid: 4b55c29f99a8f93489474ba1bc05be90, type: 3}
+  m_PrefabInstance: {fileID: 6028090624172787771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558434150925452571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ff3735ad2c4e9498297655e72afa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

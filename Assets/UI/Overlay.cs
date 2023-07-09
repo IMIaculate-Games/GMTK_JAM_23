@@ -12,6 +12,6 @@ public class Overlay : MonoBehaviour
         enemyCoin.text = GameData.enemyGold.ToString();
         coinCounter.text = GameData.gold.ToString();
         enemyHealth.value = GameData.enemyLives;
-        healthBar.value = GameData.live;
+        healthBar.value = GameData.life;
     }
 }

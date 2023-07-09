@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 /// <summary>
 /// Made by <see href="https://github.com/boTimPact" langword="boTimPact" />
@@ -9,17 +8,16 @@ public class PauseMenu : MonoBehaviour
 {
     #region Serialized Fields
 
-    [SerializeField] private GameObject pauseMenu, resumeButton;
+    [SerializeField] private GameObject pauseMenu;
 
     #endregion Serialized Fields
 
     #region Game Mechanics / Methods
 
-    private void PauseGame()
+    public void PauseGame()
     {
         GameData.isPaused = true;
         pauseMenu.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(resumeButton);
         Time.timeScale = 0;
     }
         
