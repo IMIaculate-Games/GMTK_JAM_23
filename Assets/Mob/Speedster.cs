@@ -1,52 +1,23 @@
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// TODO: Provide a summary of your script here.
-/// To create an auto-generated summary template
-/// type 3 /// slash characters after you have
-/// written your class or method signature.
-/// </summary>
+
 public class Speedster : Mob
 {
-
-    #region Fields
-
-    public Rigidbody2D rg;
     private Animator animator;
-    
-    #endregion Fields
-
-    #region Built-Ins / MonoBehaviours
-
-    // TODO: Put Unity built-in event methods here.
-    // Such as Awake, Start, Update.
-    // But also OnEnable, OnDestroy, OnTrigger and such.
-
+   
     void Awake()
     {
         base.Initialize();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-    #endregion Built-Ins / MonoBehaviours
-
-    #region GetSets / Properties
-
-    #endregion GetSets / Properties
-
-    #region Game Mechanics / Methods
-
     public override void Attacked(int damage, bool isMagic, bool isRanged)
     {
-
         if (isMagic)
         {
             TakeDamage(damage);
@@ -71,10 +42,8 @@ public class Speedster : Mob
 
         }
         TakeDamage(damage - resistance);
-
-
-        //throw new NotImplementedException();
     }
+
     public override void TakeDamage(int damage)
     {
         if (healthPoints == 0)
@@ -92,15 +61,7 @@ public class Speedster : Mob
     public override void UnitDeath()
     {
         //Optional Death animation lol
-        UpdateGameData();
+        DropMoney();
         Destroy(gameObject);
     }
-    
-    #endregion Game Mechanics / Methods
-
-    #region Overarching Methods / Helpers
-
-    // TODO: Put your helper methods here.
-
-    #endregion Overarching Methods / Helpers
 }
