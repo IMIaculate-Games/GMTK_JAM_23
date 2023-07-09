@@ -100,9 +100,10 @@ protected Soldier opponentSoldier = null;*/
 
     public abstract void UnitDeath();
 
-    protected void DropMoney()
+    protected void UpdateGameData()
     {
         GameData.enemyGold += goldGivenOnKill;
+        GameData.life--;
         Debug.Log(GameData.enemyGold);
     }
 
