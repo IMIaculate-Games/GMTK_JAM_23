@@ -46,6 +46,8 @@ public class Fodder : Mob
     public Rigidbody2D rg;
     private Coroutine fightingCoroutine;
     private float originalSpeed;
+
+    private Animator animator;
     
 
 
@@ -67,6 +69,7 @@ public class Fodder : Mob
     void Start()
     {
         base.Initialize();
+        animator = GetComponent<Animator>();
 
 
     }
@@ -164,7 +167,8 @@ public class Fodder : Mob
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
-            UnitDeath();
+            //UnitDeath();
+            animator.Play("death");
         }
     }
 

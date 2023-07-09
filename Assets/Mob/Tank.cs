@@ -42,7 +42,7 @@ public class Tank : Mob
     #endregion Serialized Fields
 
     #region Fields
-
+    private Animator animator;
     // TODO: Put general non-serialized fields here.
 
     #endregion Fields
@@ -62,7 +62,7 @@ public class Tank : Mob
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -152,7 +152,8 @@ public class Tank : Mob
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
-            UnitDeath();
+            //UnitDeath();
+            animator.Play("death");
         }
     }
 

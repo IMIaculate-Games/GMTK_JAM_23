@@ -43,6 +43,7 @@ public class Speedster : Mob
 
     #region Fields
 
+    private Animator animator;
     // TODO: Put general non-serialized fields here.
 
 
@@ -63,7 +64,7 @@ public class Speedster : Mob
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -153,7 +154,8 @@ public class Speedster : Mob
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
-            UnitDeath();
+            //UnitDeath();
+            animator.Play("death");
         }
     }
 
