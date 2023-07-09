@@ -35,6 +35,7 @@ public class MainMenu : MonoBehaviour
 
     public void TogglePlay(bool running)
     {
+        GameData.Reset();
         GameData.isRunning = running;
     }
 }

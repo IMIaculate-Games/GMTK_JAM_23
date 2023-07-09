@@ -5,4 +5,12 @@ public static class GameData
     public static int life = initialLives * 2, gold = initialGold;
     public static bool isPaused = false, isRunning = false;
     public const int MAIN_MENU = 0, LEVEL1 = 1, LEVEL2 = 2, LEVEL3 = 3, GAME_OVER = 4;
+
+    public static void Reset()
+    {
+        enemyLives = initialLives;
+        enemyGold = initialGold;
+        life = initialLives * 2;
+        gold = initialGold;
+    }
 }
