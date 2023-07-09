@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
 
     public Transform startPoint;
     public Transform[] path;
+    public GameObject Win;
 
     private void Awake()
     {
@@ -29,6 +30,13 @@ public class LevelManager : MonoBehaviour
         {
             GameData.enemyLives -= 1;
             Debug.Log(GameData.enemyLives);
+            if (GameData.enemyLives <= 0)
+            {
+                Win.SetActive(true);
+                int index = SceneManager.GetActiveScene().buildIndex;
+                index = Mathf.Clamp(index++, GameData.MAIN_MENU, GameData.GAME_OVER);
+                SceneManager.LoadScene(index);
+            }
         }
     }
 }
