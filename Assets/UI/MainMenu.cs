@@ -1,7 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public static void ChangeScene(int sceneID)
+    {
+        SceneManager.LoadScene(sceneID);
+    }
 
     /// <summary>
     /// Quits the application or editor.
@@ -11,7 +16,7 @@ public class MainMenu : MonoBehaviour
     #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
     #endif
-        Application.Quit();
+        SceneManager.LoadScene(GameData.GAME_OVER);
     }
 
     /// <summary>
