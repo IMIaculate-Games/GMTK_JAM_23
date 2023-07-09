@@ -19,12 +19,20 @@ public class EnemyMovement : MonoBehaviour
 
 
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        
+       
+
+    }
     void Start()
     {
         target = LevelManager.main.path[Index];
         myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        moveSpeed = mob.MovementSpeed;
+        float movementSpeed = mob.MovementSpeed;
+        moveSpeed = movementSpeed;
     }
 
     // Update is called once per frame

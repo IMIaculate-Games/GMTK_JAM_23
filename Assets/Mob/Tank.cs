@@ -160,7 +160,7 @@ public class Tank : Mob
     public override void UnitDeath()
     {
         //Optional Death animation lol
-        DropMoney();
+        UpdateGameData();
         Destroy(gameObject);
     }
     

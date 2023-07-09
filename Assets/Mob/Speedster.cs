@@ -11,42 +11,12 @@ using UnityEngine;
 /// </summary>
 public class Speedster : Mob
 {
-    /**
-        * TODO: General Structure Ideas:
-        * 
-        * Try to keep an order of fields from most complex to primitive.
-        * GameObject go;
-        * struct point;
-        * float num;
-        * bool truthy;
-        * 
-        * Constants before variables maybe too.
-        * const int TIME_PLANNED_FOR_THIS
-        * int timeSpentOnThis
-        * 
-        * Also from most public to private. Valid for methods too.
-        * public
-        * internal
-        * protected
-        * private
-        * 
-        *  Then only probably by alphabet. If at all
-        */
-
-    #region Serialized Fields
-
-    //public MobData data;
-
-
-
-    #endregion Serialized Fields
 
     #region Fields
 
+    public Rigidbody2D rg;
     private Animator animator;
-    // TODO: Put general non-serialized fields here.
-
-
+    
     #endregion Fields
 
     #region Built-Ins / MonoBehaviours
@@ -57,7 +27,7 @@ public class Speedster : Mob
 
     void Awake()
     {
-        Initialize();
+        base.Initialize();
     }
 
     // Start is called before the first frame update
@@ -73,15 +43,6 @@ public class Speedster : Mob
     #endregion GetSets / Properties
 
     #region Game Mechanics / Methods
-
-    // TODO: Put your game specific mechanics here.
-    // If they can be grouped by functionality, do so.
-
-    /// <summary>
-    /// TODO: Provide a summary for the method
-    /// </summary>
-    /// <param name="param">List the parameters.</param>
-    /// <returns>Specify what it returns, if it does so.</returns>
 
     public override void Attacked(int damage, bool isMagic, bool isRanged)
     {
@@ -131,7 +92,7 @@ public class Speedster : Mob
     public override void UnitDeath()
     {
         //Optional Death animation lol
-        DropMoney();
+        UpdateGameData();
         Destroy(gameObject);
     }
     
