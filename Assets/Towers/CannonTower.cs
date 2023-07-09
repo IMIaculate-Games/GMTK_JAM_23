@@ -10,10 +10,14 @@ public class CannonTower : Tower
 
     private ParticleSystem outExplosion;
 
+    private Vector3 cannonSpawnLocation;
+
     protected override void Start()
     {
         base.Start();
         outExplosion = GetComponentInChildren<ParticleSystem>();
+
+        cannonSpawnLocation = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 
     // Update is called once per frame
@@ -29,7 +33,7 @@ public class CannonTower : Tower
                 // get closest target
                 GameObject closestTarget = getClosestTarget();
 
-                GameObject proj = Instantiate(cannonball, transform);
+                GameObject proj = Instantiate(cannonball, cannonSpawnLocation, transform.rotation);
 
                 proj.GetComponent<CannonBall>().SetTarget(closestTarget, Random.Range(damage.min, damage.max));
 
