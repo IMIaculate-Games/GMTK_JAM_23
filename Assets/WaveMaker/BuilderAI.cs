@@ -5,17 +5,21 @@ public class BuilderAI : MonoBehaviour
 { 
     [SerializeField] private List<TowerSettings> towers;
     private List<GameObject> plots;
+    private Transform plotContainer;
 
     private float waitTimer;
 
     void Start()
     {
-        waitTimer = Random.Range(3, 10);
+        plotContainer = GameObject.Find("TowerPlots").transform;
+        waitTimer = Random.Range(2, 5);
         plots = GetPlots();
     }
 
     void Update()
     {
+        if (!GameData.isRunning) return;
+
         if (waitTimer > 0)
         {
             waitTimer -= Time.deltaTime;
@@ -28,8 +32,7 @@ public class BuilderAI : MonoBehaviour
     {
         TowerSettings tower = PickTower();
         if (GameData.enemyGold < tower.cost) return;
-        GameObject plot = ;
-        Instantiate(tower.prefab, PickPlot(), Quaternion.identity, con);
+        Instantiate(tower.prefab, PickPlot(), Quaternion.identity, plotContainer);
         GameData.enemyGold -= tower.cost;
         
         waitTimer = Random.Range(3, 10);
@@ -51,7 +54,6 @@ public class BuilderAI : MonoBehaviour
     private List<GameObject> GetPlots()
     {
         List<GameObject> result = new();
-        Transform plotContainer = GameObject.Find("TowerPlots").transform;
         for (int i = 0; i < plotContainer.childCount; i++)
         {
             result.Add(plotContainer.GetChild(i).gameObject);

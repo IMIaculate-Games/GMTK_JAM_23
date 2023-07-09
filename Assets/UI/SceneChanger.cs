@@ -11,9 +11,13 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene(sceneID);
     }
 
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public int GetCurrentSceneID()
     {
-        //TODO implement
-        return 0;
+        return SceneManager.GetActiveScene().buildIndex;
     }
 }

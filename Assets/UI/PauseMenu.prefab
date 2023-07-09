@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6059558779101728038}
-        m_TargetAssemblyTypeName: _Scripts.Controllers.PauseMenu, Assembly-CSharp
-        m_MethodName: ResumeGame
+      - m_Target: {fileID: 6826700626887985766, guid: da9f44b2eb6a04165a2b8588a8961f72, type: 3}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: RestartScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1061,10 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ff3735ad2c4e9498297655e72afa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: -944628639613478452, guid: 25ff31b13c1d3cf459a550e24612fd75, type: 3}
   pauseMenu: {fileID: 4357989686032796086}
-  resumeButton: {fileID: 2653348720613537965}
-  button: {fileID: 3700162912877907380, guid: 25ff31b13c1d3cf459a550e24612fd75, type: 3}
 --- !u!222 &8710432424474871419
 CanvasRenderer:
   m_ObjectHideFlags: 0
