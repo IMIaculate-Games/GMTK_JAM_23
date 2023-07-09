@@ -21,7 +21,6 @@ public abstract class Tower : MonoBehaviour
 
     protected float attackTimer;
 
-    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -41,8 +40,6 @@ public abstract class Tower : MonoBehaviour
 
         attackTimer = 1/attackSpeed;
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = sprite;
     }
 
     // Update is called once per frame
