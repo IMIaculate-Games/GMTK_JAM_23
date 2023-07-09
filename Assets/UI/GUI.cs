@@ -62,4 +62,9 @@ public class GUI : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
+    public void TogglePlay(bool running)
+    {
+        GameData.isRunning = running;
+    }
 }
