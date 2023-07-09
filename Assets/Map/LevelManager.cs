@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
         AudioManager.Instance.PlayMusic(songtitles[SceneManager.GetActiveScene().buildIndex]);
     }
 
@@ -37,7 +38,8 @@ public class LevelManager : MonoBehaviour
                 Win.SetActive(true);
                 
                 int index = SceneManager.GetActiveScene().buildIndex;
-                index = Mathf.Clamp(index++, GameData.MAIN_MENU, GameData.GAME_OVER);
+                index++;
+                index = Mathf.Clamp(index,  GameData.MAIN_MENU, GameData.GAME_OVER);
                 SceneManager.LoadScene(index);
             }
         }
