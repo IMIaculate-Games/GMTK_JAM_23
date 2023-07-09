@@ -10,12 +10,17 @@ public class GUI : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Toggle speedUp;
 
+
     private void Update()
     {
         enemyCoin.text = GameData.enemyGold.ToString();
         coinCounter.text = GameData.gold.ToString();
         enemyHealth.value = GameData.enemyLives;
         healthBar.value = GameData.life;
+        if (GameData.life <= 0)
+        {
+            PauseGame();
+        }
     }
 
     /// <summary>
