@@ -1,12 +1,7 @@
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class Tank : Mob
 {
-
     private Animator animator;
 
     void Awake()

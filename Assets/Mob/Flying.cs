@@ -1,11 +1,9 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 class Flying : Mob, Attackable, IsFlying
 {
-
     private Animator animator;
 
 
