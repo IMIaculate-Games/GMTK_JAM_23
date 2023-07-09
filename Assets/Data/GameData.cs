@@ -9,7 +9,7 @@ public static class GameData
     public static void Reset()
     {
         enemyLives = 10;
-        enemyGold = 100;
+        enemyGold = 200;
         life = 10 * 2;
         gold = 100;
     }
