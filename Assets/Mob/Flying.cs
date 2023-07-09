@@ -65,6 +65,7 @@ class Flying : Mob, Attackable, IsFlying
     public override void UnitDeath()
     {
         //Optional Death animation lol
+        AudioManager.Instance.PlaySfx("coinDrop");
         UpdateGameData();
         Destroy(gameObject);
     }

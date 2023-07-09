@@ -103,7 +103,7 @@ protected Soldier opponentSoldier = null;*/
     protected void UpdateGameData()
     {
         GameData.enemyGold += goldGivenOnKill;
-        GameData.life--;
+        GameData.live--;
         Debug.Log(GameData.enemyGold);
     }
 
