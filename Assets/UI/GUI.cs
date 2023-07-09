@@ -49,9 +49,6 @@ public class GUI : MonoBehaviour
 
     public void QuitGame()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
         SceneManager.LoadScene(GameData.GAME_OVER);
     }
 

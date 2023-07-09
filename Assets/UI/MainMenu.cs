@@ -16,6 +16,11 @@ public class MainMenu : MonoBehaviour
     #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
     #endif
+        Application.Quit();
+    }
+
+    public void GameOver()
+    {
         SceneManager.LoadScene(GameData.GAME_OVER);
     }
 
