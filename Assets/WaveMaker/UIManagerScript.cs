@@ -14,6 +14,10 @@ public class UIManagerScript : MonoBehaviour
 
     public Sprite wolfSprite;
 
+    public Sprite slimeSprite;
+
+    public Sprite flyingSprite;
+
     public Sprite emptySprite;
 
     //Objects
@@ -32,6 +36,8 @@ public class UIManagerScript : MonoBehaviour
     List<GameObject> images;
 
     GameObject[] slots;
+
+    string[] mobs;
 
     int currentSlotIndex = 0;
 
@@ -52,6 +58,11 @@ public class UIManagerScript : MonoBehaviour
 
         slots = GameObject.FindGameObjectsWithTag("UI_SLot");
 
+        mobs = new string[slots.Length];
+        for(int i = 0; i < slots.Length; i++)
+        {
+            mobs[i] = "";
+        }
 
         //deactivating menu buttons
         showMenu(false);
@@ -66,6 +77,12 @@ public class UIManagerScript : MonoBehaviour
 
     public void addMobToList(string mob)
     {
+        if (currentSlotIndex < slots.Length)
+        {
+            mobs[currentSlotIndex] = mob;
+        }
+        
+
         switch (mob)
         {
             case "goblin":
@@ -76,7 +93,27 @@ public class UIManagerScript : MonoBehaviour
                 }
                 break;
             case "wolf":
+                if (currentSlotIndex < slots.Length)
+                {
+                    slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = wolfSprite;
+                    currentSlotIndex++;
+                }
+                break;
+            case "slime":
+                if (currentSlotIndex < slots.Length)
+                {
+                    slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = slimeSprite;
+                    currentSlotIndex++;
+                }
+                break;
 
+            case "flying":
+                if (currentSlotIndex < slots.Length)
+                {
+                    slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = flyingSprite;
+                    currentSlotIndex++;
+                }
+                break;
                 break;
             default:
 
@@ -86,13 +123,14 @@ public class UIManagerScript : MonoBehaviour
 
     public void delete()
     {
-        if(currentSlotIndex >= 0)
+        if(currentSlotIndex > 0)
         {
-            slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = emptySprite;
-            if(currentSlotIndex != 0)
+            if (currentSlotIndex != 0)
             {
                 currentSlotIndex--;
             }
+            mobs[currentSlotIndex] = "";
+            slots[currentSlotIndex].gameObject.GetComponent<Image>().sprite = emptySprite;  
         }
 
     }
@@ -109,6 +147,11 @@ public class UIManagerScript : MonoBehaviour
     public void sendWave()
     {
         showMenu(false);
+        for(int i = 0; i < mobs.Length; i++)
+        {
+            print(mobs[i]);
+        }
+        
         hash.Clear();
     }
 
