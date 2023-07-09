@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: Archer
   damage:
-    min: 3
-    max: 6
+    min: 4
+    max: 7
   cost: 70
   range: 3
-  attackSpeed: 0.8
+  attackSpeed: 1.4
   sprite: {fileID: -1690221186, guid: 6dc1d70fd1ba04a4388ad0e119b5aa38, type: 3}
   prefab: {fileID: 6951275188180299512, guid: fefd4f098438bcf42982f35bf12741d8, type: 3}
