@@ -8,13 +8,22 @@ public class MobSpawner : MonoBehaviour
     private float spawnRate = 1; // time in seconds between each spawn
     private float spawnTimer;
     private bool mobsLoaded = false;
-    private Queue<GameObject> mobs;
+    private Queue<string> mobs;
+
+    [SerializeField]
+    private GameObject goblin;
+    [SerializeField]
+    private GameObject wolf;
+    [SerializeField]
+    private GameObject slime;
+    [SerializeField]
+    private GameObject flying;
 
     // Start is called before the first frame update
     void Start()
     {
         spawnTimer = spawnRate;
-        mobs = new Queue<GameObject>();
+        mobs = new Queue<string>();
     }
 
     // Update is called once per frame
@@ -30,8 +39,22 @@ public class MobSpawner : MonoBehaviour
 
                 if(mobs.Count > 0)
                 {
-                    GameObject mob = mobs.Dequeue();
-                    Instantiate(mob, transform);
+
+                    switch (mobs.Dequeue())
+                    {
+                        case "goblin":
+                            Instantiate(goblin, transform);
+                            break;
+                        case "wolf":
+                            Instantiate(wolf, transform);
+                            break;
+                        case "slime":
+                            Instantiate(slime, transform);
+                            break;
+                        case "flying":
+                            Instantiate(flying, transform);
+                            break;
+                    }
                 }
                 else
                 {
@@ -42,9 +65,9 @@ public class MobSpawner : MonoBehaviour
     }
 
     // this method needs a list of mob gameobjects to spawn
-    public void LoadMobs(List<GameObject> mobList)
+    public void LoadMobs(string[] mobList)
     {
-        foreach (GameObject mob in mobList)
+        foreach (string mob in mobList)
         {
             mobs.Enqueue(mob);
         }

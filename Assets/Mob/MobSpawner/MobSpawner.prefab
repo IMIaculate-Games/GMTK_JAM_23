@@ -45,11 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498ef61f1a8e8ba499b9dbeadb78c254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobsList:
-  - {fileID: 3953162282916391542, guid: 9c9b52868993f06499000b78e5a42ee6, type: 3}
-  - {fileID: 7870172157075490553, guid: a6489418d686175448c337a45557fd74, type: 3}
-  - {fileID: 4150039887714199427, guid: 13fde92551869fb40ad8d1e1b79984ca, type: 3}
-  - {fileID: 6284362554493730622, guid: eec87dc8198d8df40bae5859b0a37c42, type: 3}
+  goblin: {fileID: 3953162282916391542, guid: 9c9b52868993f06499000b78e5a42ee6, type: 3}
+  wolf: {fileID: 7870172157075490553, guid: a6489418d686175448c337a45557fd74, type: 3}
+  slime: {fileID: 4150039887714199427, guid: 13fde92551869fb40ad8d1e1b79984ca, type: 3}
+  flying: {fileID: 6284362554493730622, guid: eec87dc8198d8df40bae5859b0a37c42, type: 3}
 --- !u!212 &4650820087437096903
 SpriteRenderer:
   m_ObjectHideFlags: 0
