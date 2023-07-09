@@ -25,11 +25,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        // if you want the music to play when game starts
-        //PlayMusic("sname");
-    }
 
     // to play a sound call AudioManager.Instance.PlayMusic(...) 
     public void PlayMusic(string name)
