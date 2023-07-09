@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public static void ChangeScene(int sceneID)
+    public void ChangeScene(int sceneID)
     {
         SceneManager.LoadScene(sceneID);
     }
@@ -31,5 +31,10 @@ public class MainMenu : MonoBehaviour
     public void ToggleSubMenu(GameObject menu)
     {
         menu.SetActive(!menu.activeInHierarchy);
+    }
+
+    public void TogglePlay(bool running)
+    {
+        GameData.isRunning = running;
     }
 }
