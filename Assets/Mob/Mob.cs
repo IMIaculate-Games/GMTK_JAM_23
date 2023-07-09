@@ -13,15 +13,17 @@ public abstract class Mob : MonoBehaviour, Attackable
 
     protected float effectiveRange, movementSpeed, attackSpeed;
  
-    protected int healthPoints, goldGivenOnKill, resistance, evasionChance;
+    protected int healthPoints, resistance, evasionChance;
    
     protected bool isFlying, isMagic, isRanged;
 
     protected StatRange attackStrength;
     protected int unitCost;
+    protected int goldGivenOnKill;
 
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
     public int UnitCost { get => unitCost; set => unitCost = value; }
+    public int GoldGivenOnKill { get => goldGivenOnKill; set => goldGivenOnKill = value; }
 
     /*protected bool isFighting;
 protected Soldier opponentSoldier = null;*/

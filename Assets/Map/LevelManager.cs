@@ -30,6 +30,8 @@ public class LevelManager : MonoBehaviour
         {
             GameData.enemyLives -= 1;
             Debug.Log(GameData.enemyLives);
+            GameData.gold += mob.GoldGivenOnKill;
+
             if (GameData.enemyLives <= 0)
             {
                 Win.SetActive(true);
