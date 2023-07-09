@@ -17,7 +17,7 @@ public class CannonTower : Tower
         base.Start();
         outExplosion = GetComponentInChildren<ParticleSystem>();
 
-        cannonSpawnLocation = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        cannonSpawnLocation = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z - 0.5f);
     }
 
     // Update is called once per frame
