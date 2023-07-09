@@ -19,7 +19,7 @@ MonoBehaviour:
     min: 26
     max: 34
   movementSpeed:
-    min: 15
-    max: 18
+    min: 150
+    max: 180
   resistance: 0
   evasionChance: 20

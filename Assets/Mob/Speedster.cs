@@ -57,8 +57,7 @@ public class Speedster : Mob
 
     void Awake()
     {
-        // base.SetUp();
-        
+        Initialize();
     }
 
     // Start is called before the first frame update
@@ -67,39 +66,9 @@ public class Speedster : Mob
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void OnEnable()
-    {
-        
-    }
-
-    void OnDisable()
-    {
-        
-    }
-
     #endregion Built-Ins / MonoBehaviours
 
     #region GetSets / Properties
-
-    // TODO: Put Auto-Properties to your fields here.
-    //
-    // These are used for private fields as getters and setters.
-    // Since they are very specific, they are down here.
-    // The structure is (amost) always the same. Copy-Paste.
-
-    /**
-    public returnType FieldNameWithCapitalStart
-    {
-        get => fieldName;
-        set => fieldName = value;
-    }
-    */
 
     #endregion GetSets / Properties
 

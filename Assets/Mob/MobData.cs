@@ -70,7 +70,6 @@ public class MobData : ScriptableObject
 
     public int UnitCost { get => unitCost; }
     
-    
     public int GoldGivenOnKill { get => goldGivenOnKill; }
     public bool IsFlying { get => isFlying;}
     public int Resistance { get => resistance; }

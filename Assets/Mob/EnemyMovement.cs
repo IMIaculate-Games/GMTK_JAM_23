@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [Header("Attributes")]
-    [SerializeField] private Rigidbody2D myRigidbody;
+    private Rigidbody2D myRigidbody;
 
-
-    [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f; //The Speed defined by the Enemy speed property
+
+    [SerializeField] private Mob mob;
 
     private Transform target;
 
@@ -23,8 +22,9 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         target = LevelManager.main.path[Index];
-
+        myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        moveSpeed = mob.MovementSpeed;
     }
 
     // Update is called once per frame
