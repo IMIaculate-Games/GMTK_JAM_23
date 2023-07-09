@@ -43,15 +43,13 @@ public class Tank : Mob
                 TakeDamage(damage * 2);
                 return;
             }
-            TakeDamage(damage - this.resistance);
-
         }
         TakeDamage(damage - resistance);
 
     }
     public override void TakeDamage(int damage)
     {
-        if (healthPoints == 0)
+        if (damage == 0)
         {
             Debug.Log("Miss!");
         }
