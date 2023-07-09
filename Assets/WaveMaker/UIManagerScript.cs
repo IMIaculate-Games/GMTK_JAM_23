@@ -117,7 +117,6 @@ public class UIManagerScript : MonoBehaviour
                     currentSlotIndex++;
                 }
                 break;
-                break;
             default:
 
                 break;
