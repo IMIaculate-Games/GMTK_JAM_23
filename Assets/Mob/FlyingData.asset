@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86febc2a1f9ac0e4f82d2bfbbe6d9194, type: 3}
   m_Name: FlyingData
   m_EditorClassIdentifier: 
-  unitCost: 1
-  goldGivenOnKill: 10
+  unitCost: 10
+  goldGivenOnKill: 15
   isFlying: 1
   healthPoints:
     min: 26

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86febc2a1f9ac0e4f82d2bfbbe6d9194, type: 3}
   m_Name: SpeedsterData
   m_EditorClassIdentifier: 
-  unitCost: 6
-  goldGivenOnKill: 8
+  unitCost: 14
+  goldGivenOnKill: 23
   isFlying: 0
   healthPoints:
     min: 15
