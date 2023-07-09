@@ -39,22 +39,25 @@ public class MobSpawner : MonoBehaviour
 
                 if(mobs.Count > 0)
                 {
-
+                    GameObject prefab = null;
                     switch (mobs.Dequeue())
                     {
                         case "goblin":
-                            Instantiate(goblin, transform);
+                            prefab = goblin;
                             break;
                         case "wolf":
-                            Instantiate(wolf, transform);
+                            prefab = wolf;
                             break;
                         case "slime":
-                            Instantiate(slime, transform);
+                            prefab = slime;
                             break;
                         case "flying":
-                            Instantiate(flying, transform);
+                            prefab = flying;
                             break;
                     }
+                    GameObject obj = Instantiate(prefab, transform);
+                    //Mob mob = obj.GetComponent<Mob>();
+                    //GameData.gold -= mob.UnitCost;
                 }
                 else
                 {
