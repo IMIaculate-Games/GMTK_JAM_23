@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &3542765380665344068
 CircleCollider2D:
@@ -197,5 +197,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4dbf3bb5e73b043ac605390966157e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myRigidbody: {fileID: 0}
+  myRigidbody: {fileID: 5898012607626000333}
   moveSpeed: 2

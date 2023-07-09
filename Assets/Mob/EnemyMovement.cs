@@ -76,7 +76,6 @@ public class EnemyMovement : MonoBehaviour
 
         Vector3 direction = Vector3.Normalize(target.position - transform.position);
 
-        myRigidbody.velocity = direction * moveSpeed * Time.deltaTime;
-
+        myRigidbody.velocity = moveSpeed * Time.deltaTime * direction;
     }
 }

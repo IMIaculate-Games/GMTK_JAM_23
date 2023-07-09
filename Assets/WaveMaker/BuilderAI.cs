@@ -31,6 +31,7 @@ public class BuilderAI : MonoBehaviour
         GameObject obj = Instantiate(tower.prefab, plot.transform.position, Quaternion.identity, plot.transform.parent.transform);
         GameData.enemyGold -= tower.cost;
         plots.Remove(plot);
+        Destroy(plot);
         waitTimer = Random.Range(3, 10);
     }
 
