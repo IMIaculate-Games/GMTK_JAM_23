@@ -18,6 +18,6 @@ MonoBehaviour:
     max: 17
   cost: 100
   range: 2
-  attackSpeed: 1.8
+  attackSpeed: 1.5
   sprite: {fileID: -2002508275, guid: 6dc1d70fd1ba04a4388ad0e119b5aa38, type: 3}
   prefab: {fileID: 6951275188180299512, guid: 98ac8a396eda2aa4caefa9b90c1210d9, type: 3}
