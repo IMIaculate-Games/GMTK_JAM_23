@@ -32,7 +32,7 @@ Transform:
   - {fileID: 8070176430102136679}
   - {fileID: 1131379355841118669}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4558668651913292051
 MonoBehaviour:
@@ -68,6 +68,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b3760571f4df26a4aa1b8d6d6d64ace4, type: 3}
   - name: IceSpellHit
     clip: {fileID: 8300000, guid: be44385180c592848be92e459c5942ec, type: 3}
+  - name: coinDrop
+    clip: {fileID: 8300000, guid: 012d581b078571142bbb22f1e1d4fe33, type: 3}
   musicSource: {fileID: 4398488136311859513}
   sfxSource: {fileID: 2257717092928619994}
 --- !u!1 &4197392879938835820

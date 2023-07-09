@@ -131,7 +131,8 @@ public class Speedster : Mob
     public override void UnitDeath()
     {
         //Optional Death animation lol
-        DropMoney();
+        AudioManager.Instance.PlaySfx("coinDrop");
+        UpdateGameData();
         Destroy(gameObject);
     }
     
