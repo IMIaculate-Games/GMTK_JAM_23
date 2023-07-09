@@ -46,7 +46,7 @@ public class CannonTower : Tower
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Attackable>() != null && collision.gameObject.GetComponent<IsFlying>() != null)
+        if (collision.gameObject.GetComponent<Attackable>() != null && collision.gameObject.GetComponent<IsFlying>() == null)
         {
             inRange.Add(collision.gameObject);
         }
@@ -54,7 +54,7 @@ public class CannonTower : Tower
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Attackable>() != null && collision.gameObject.GetComponent<IsFlying>() != null)
+        if (collision.gameObject.GetComponent<Attackable>() != null && collision.gameObject.GetComponent<IsFlying>() == null)
         {
             inRange.Remove(collision.gameObject);
         }
