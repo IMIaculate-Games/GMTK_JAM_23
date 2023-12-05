@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,4 +17,4 @@ public class SoldierSpawnOcc : MonoBehaviour
         // this should be called before the soldier is destroyed
         spawnLocation.gameObject.GetComponent<SpawnLocation>().isOccupied = false;
     }
-}
+}*/

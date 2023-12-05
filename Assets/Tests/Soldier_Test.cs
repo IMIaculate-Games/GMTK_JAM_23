@@ -12,8 +12,10 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class Soldier_Test : MonoBehaviour, Attackable
 {
+   
     private Mob_Test opponent = null;
     private Attackable target = null;
+
     /*private Queue<Attackable> targets;*/
     /**
         * TODO: General Structure Ideas:
@@ -85,7 +87,7 @@ public class Soldier_Test : MonoBehaviour, Attackable
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isFighting)
         {
@@ -93,13 +95,17 @@ public class Soldier_Test : MonoBehaviour, Attackable
             if (attackTimer < 0)
             {
                 attackTimer = 1 / attackSpeed;
-                Attack(target);
+                if (target != null)
+                {
+                    Attack(target);
+                }
+                else { 
+                    isFighting = false;
+                }
             }
-            if(target == null)
-            {
-                isFighting = false;
-            }
+            
         }
+        transform.position = new Vector2(transform.position.x + movementSpeed * Time.deltaTime/10, 0f);
     }
 
     void OnEnable()
@@ -246,7 +252,7 @@ public class Soldier_Test : MonoBehaviour, Attackable
             Debug.Log("I Just attacked :D");
         }
     }
-    
+  
 
 
 
