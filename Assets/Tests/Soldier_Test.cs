@@ -12,10 +12,14 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class Soldier_Test : MonoBehaviour, Attackable
 {
-   
+    private Vector2 setLocation;
     private Mob_Test opponent = null;
     private Attackable target = null;
 
+    public Soldier_Test(Vector2 spot)
+    {
+        this.setLocation = spot;
+    }
     /*private Queue<Attackable> targets;*/
     /**
         * TODO: General Structure Ideas:

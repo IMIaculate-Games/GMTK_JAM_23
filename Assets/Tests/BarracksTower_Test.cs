@@ -2,72 +2,100 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BarracksTower_Test : MonoBehaviour
 {
     private int soldiersPerGroup;
+    private int currentSoldierCount;
     protected GroupOfSoldiers_Test soldiers;
+    // next to can be summed up in the future
+    private Vector2 setLocationOfGroup;
+    private Vector2 offSet = new Vector2(1.0f,1.0f); //Needs to be changed to dynamically suit the path nearby;
     [SerializeField]
     protected BarracksData_Test barracksData;
     protected float respawnCooldown;
-   
+    protected int barracksTier;
+    protected float barracksRange;
+
     /* private Animator animator;*/
 
+    public void Initialize()
+    {
+        soldiersPerGroup = barracksData.numberOfSoldiers;
+        barracksTier = barracksData.barracksTier;
+        barracksRange = barracksData.towerRange;
+        respawnCooldown = barracksData.respawnCooldown;
+        soldiers = new GroupOfSoldiers_Test(soldiersPerGroup, setLocationOfGroup+offSet);
+
+    }
 
     protected void Start()
     {
-        
-        
+        Initialize();
+        this.setLocationOfGroup = transform.position;
+        for(int i = 0; i <= soldiersPerGroup; i++)
+        {
+            addSoldierToGroup();
+        }
         /*animator = GetComponentInChildren<Animator>();*/
     }
 
     // Update is called once per frame
     protected  void Update()
     {
-
-        float respawnTimer = respawnCooldown;
-        respawnTimer -= Time.deltaTime;
-        if (respawnTimer< 0)
+        currentSoldierCount = soldiers.currentSoldierCount();
+        if (currentSoldierCount < soldiersPerGroup)
         {
-            respawnTimer = respawnCooldown;
-            if (soldiers.currentSoldierCount() < soldiersPerGroup)
+            float respawnTimer = respawnCooldown;
+            respawnTimer -= Time.deltaTime;
+            if (respawnTimer < 0)
             {
-                Soldier_Test soldier = new Soldier_Test();
-                soldiers.addSoldierToGroup(soldier);
-                               
-                /*ar.GetComponent<Arrow>().SetTarget(closestTarget, Random.Range(damage.min, damage.max));*/
-
-               /* AudioManager.Instance.PlaySfx("ArrowOut");*/
-
-                /*Vector3 direction = Vector3.Normalize(closestTarget.transform.position - animator.transform.position);
-
-                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+                respawnTimer = respawnCooldown;
+                if (soldiers.currentSoldierCount() < soldiersPerGroup)
                 {
-                    if (direction.x < 0)
+                    addSoldierToGroup();
+
+                    /*ar.GetComponent<Arrow>().SetTarget(closestTarget, Random.Range(damage.min, damage.max));*/
+
+                    /* AudioManager.Instance.PlaySfx("ArrowOut");*/
+
+                    /*Vector3 direction = Vector3.Normalize(closestTarget.transform.position - animator.transform.position);
+
+                    if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
                     {
-                        animator.Play("ArcherAttackLeft");
+                        if (direction.x < 0)
+                        {
+                            animator.Play("ArcherAttackLeft");
+                        }
+                        else
+                        {
+                            animator.Play("ArcherAttackRight");
+                        }
                     }
                     else
                     {
-                        animator.Play("ArcherAttackRight");
-                    }
+                        if (direction.y < 0)
+                        {
+                            animator.Play("ArcherAttackFront");
+                        }
+                        else
+                        {
+                            animator.Play("ArcherAttackBack");
+                        }
+                    }*/
                 }
-                else
-                {
-                    if (direction.y < 0)
-                    {
-                        animator.Play("ArcherAttackFront");
-                    }
-                    else
-                    {
-                        animator.Play("ArcherAttackBack");
-                    }
-                }*/
             }
+
         }
 
-
-
+    }
+    private void addSoldierToGroup()
+    {
+        float randomX = Random.Range(0.0f, 4.0f) - 2;
+        float randomY = Random.Range(0.0f, 4.0f) - 2;
+        Soldier_Test soldier = new Soldier_Test(setLocationOfGroup + offSet + new Vector2(randomX, randomY));
+        soldiers.addSoldierToGroup(soldier);
     }
 
     /*private void OnTriggerEnter2D(Collider2D collision)

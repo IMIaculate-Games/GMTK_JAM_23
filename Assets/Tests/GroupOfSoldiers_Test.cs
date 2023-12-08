@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GroupOfSoldiers_Test : MonoBehaviour
 {
-    protected int numberOfSoldiers;
-    protected Vector2 barracksLocation;
+    protected int maxNumberOfSoldiers;
     protected Vector2 setLocation;
     protected List<Soldier_Test> soldiersInGroup = new List<Soldier_Test>();
 
     public GroupOfSoldiers_Test(int soldierNumber, Vector2 location)
     {
-        this.numberOfSoldiers = soldierNumber;
+        this.maxNumberOfSoldiers = soldierNumber;
         this.setLocation = location;
     }
     // Start is called before the first frame update
@@ -28,10 +28,11 @@ public class GroupOfSoldiers_Test : MonoBehaviour
     public void addSoldierToGroup(Soldier_Test soldier)
     {
         soldiersInGroup.Add(soldier);
+        spawnSoldier(soldier);
     }
     private void spawnSoldier(Soldier_Test soldier)
     {
-        Instantiate(new Soldier_Test(), barracksLocation, Quaternion.identity);
+        Instantiate(soldier);
     }
     private void moveSoldierToSetLocation()
     {
@@ -43,13 +44,13 @@ public class GroupOfSoldiers_Test : MonoBehaviour
     {
         return soldiersInGroup.Count;
     }
-    public void set_numberOfSoliders(int number)
+    public void set_maxNumberOfSoliders(int number)
     {
-        this.numberOfSoldiers = number;
+        this.maxNumberOfSoldiers = number;
     }
-    public int get_numberOfSoldiers()
+    public int get_maxNumberOfSoldiers()
     {
-        return this.numberOfSoldiers;
+        return this.maxNumberOfSoldiers;
     }
     public void set_setLocation(Vector2 location)
     {

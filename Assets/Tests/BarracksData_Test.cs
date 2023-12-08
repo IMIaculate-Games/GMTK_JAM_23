@@ -12,8 +12,10 @@ using UnityEngine;
 /// </summary>
 public class BarracksData_Test : ScriptableObject
 {
+    [SerializeField]
     public int buildingCost, numberOfSoldiers, barracksTier, towerRange;
-
+    [SerializeField]
+    public float respawnCooldown;
     /**
         * TODO: General Structure Ideas:
         * 
@@ -65,7 +67,7 @@ public class BarracksData_Test : ScriptableObject
     public int BarracksTier { get => barracksTier; }
     public int TowerRange { get => towerRange; }
 
-
+    public float RespawnCooldown { get => respawnCooldown; }
 
 
     #endregion GetSets / Properties
