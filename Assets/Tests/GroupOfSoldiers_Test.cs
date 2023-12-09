@@ -1,13 +1,14 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class GroupOfSoldiers_Test : MonoBehaviour
 {
+    
     protected int maxNumberOfSoldiers;
     protected Vector2 setLocation;
-    protected List<Soldier_Test> soldiersInGroup = new List<Soldier_Test>();
+    
 
     public GroupOfSoldiers_Test(int soldierNumber, Vector2 location)
     {
@@ -25,15 +26,8 @@ public class GroupOfSoldiers_Test : MonoBehaviour
     {
         
     }
-    public void addSoldierToGroup(Soldier_Test soldier)
-    {
-        soldiersInGroup.Add(soldier);
-        spawnSoldier(soldier);
-    }
-    private void spawnSoldier(Soldier_Test soldier)
-    {
-        Instantiate(soldier);
-    }
+   
+    
     private void moveSoldierToSetLocation()
     {
 
@@ -61,3 +55,4 @@ public class GroupOfSoldiers_Test : MonoBehaviour
         return this.setLocation;
     }
 }
+*/

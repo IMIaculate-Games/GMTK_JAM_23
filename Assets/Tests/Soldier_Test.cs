@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 /// type 3 /// slash characters after you have
 /// written your class or method signature.
 /// </summary>
-public class Soldier_Test : MonoBehaviour, Attackable
+public class Soldier_Test : BarracksTower_Test, Attackable
 {
     private Vector2 setLocation;
     private Mob_Test opponent = null;
@@ -219,6 +219,7 @@ public class Soldier_Test : MonoBehaviour, Attackable
     public void UnitDeath()
     {
         Debug.Log("DEAD!" + name);
+        setSpawnedSoldiers(getSpawnedSoldiers() - 1);
         //Optional Death animation lol
         Destroy(gameObject);
     }

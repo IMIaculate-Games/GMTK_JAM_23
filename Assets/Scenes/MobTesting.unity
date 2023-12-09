@@ -247,6 +247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef040ad6a0d063449937a6c69f3cb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soldierPrefab: {fileID: 0}
+  maxNumberOfSoldiers: 0
+  setLocation: {x: 0, y: 0}
+  soldiersInGroup: []
 --- !u!212 &709130136
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -293,7 +297,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 0.18208933, y: 0.17491484}
+  m_Size: {x: 0.2311183, y: 0.12886983}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -308,7 +312,7 @@ Transform:
   m_GameObject: {fileID: 709130134}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.349, y: 0.527, z: 0}
+  m_LocalPosition: {x: -5.87942, y: 0.51798, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -456,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barracksData: {fileID: 11400000, guid: a07f62b1070fa7943a3f787b2fddeb19, type: 2}
+  soldierPrefab: {fileID: 4122092514465385896, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
 --- !u!58 &1477941403
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -688,63 +693,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1536081465}
   m_SourcePrefab: {fileID: 100100000, guid: 9c9b52868993f06499000b78e5a42ee6, type: 3}
---- !u!1001 &1449249220348470487
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3047984705905165106, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047984705905165106, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047984705905165106, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047984705905165106, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047984705905165106, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047984705905165106, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047984705905165106, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047984705905165106, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047984705905165106, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047984705905165106, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4122092514465385896, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
-      propertyPath: m_Name
-      value: Soldier
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c8cf847d5b3cc044cb1447f0da55e4b7, type: 3}
 --- !u!1001 &8330738921244525008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -843,6 +791,5 @@ SceneRoots:
   - {fileID: 8330738921244525008}
   - {fileID: 92809734}
   - {fileID: 1666650779}
-  - {fileID: 1449249220348470487}
   - {fileID: 1477941405}
   - {fileID: 709130137}

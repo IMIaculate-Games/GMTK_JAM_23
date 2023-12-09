@@ -7,8 +7,8 @@ using Random = UnityEngine.Random;
 public class BarracksTower_Test : MonoBehaviour
 {
     private int soldiersPerGroup;
-    private int currentSoldierCount;
-    protected GroupOfSoldiers_Test soldiers;
+
+    /*protected GroupOfSoldiers_Test soldiers;*/
     // next to can be summed up in the future
     private Vector2 setLocationOfGroup;
     private Vector2 offSet = new Vector2(1.0f,1.0f); //Needs to be changed to dynamically suit the path nearby;
@@ -17,6 +17,9 @@ public class BarracksTower_Test : MonoBehaviour
     protected float respawnCooldown;
     protected int barracksTier;
     protected float barracksRange;
+    protected int spawnedSoldiers;
+    [SerializeField]
+    protected GameObject soldierPrefab;
 
     /* private Animator animator;*/
 
@@ -26,7 +29,7 @@ public class BarracksTower_Test : MonoBehaviour
         barracksTier = barracksData.barracksTier;
         barracksRange = barracksData.towerRange;
         respawnCooldown = barracksData.respawnCooldown;
-        soldiers = new GroupOfSoldiers_Test(soldiersPerGroup, setLocationOfGroup+offSet);
+        /*soldiers = new GroupOfSoldiers_Test(soldiersPerGroup, setLocationOfGroup+offSet);*/
 
     }
 
@@ -36,7 +39,7 @@ public class BarracksTower_Test : MonoBehaviour
         this.setLocationOfGroup = transform.position;
         for(int i = 0; i <= soldiersPerGroup; i++)
         {
-            addSoldierToGroup();
+            spawnSoldier();
         }
         /*animator = GetComponentInChildren<Animator>();*/
     }
@@ -44,17 +47,16 @@ public class BarracksTower_Test : MonoBehaviour
     // Update is called once per frame
     protected  void Update()
     {
-        currentSoldierCount = soldiers.currentSoldierCount();
-        if (currentSoldierCount < soldiersPerGroup)
+         
+        if (spawnedSoldiers < soldiersPerGroup)
         {
             float respawnTimer = respawnCooldown;
             respawnTimer -= Time.deltaTime;
             if (respawnTimer < 0)
             {
                 respawnTimer = respawnCooldown;
-                if (soldiers.currentSoldierCount() < soldiersPerGroup)
-                {
-                    addSoldierToGroup();
+                spawnSoldier();
+
 
                     /*ar.GetComponent<Arrow>().SetTarget(closestTarget, Random.Range(damage.min, damage.max));*/
 
@@ -84,20 +86,25 @@ public class BarracksTower_Test : MonoBehaviour
                             animator.Play("ArcherAttackBack");
                         }
                     }*/
-                }
+                
             }
 
         }
 
     }
-    private void addSoldierToGroup()
+    private void spawnSoldier()
     {
-        float randomX = Random.Range(0.0f, 4.0f) - 2;
-        float randomY = Random.Range(0.0f, 4.0f) - 2;
-        Soldier_Test soldier = new Soldier_Test(setLocationOfGroup + offSet + new Vector2(randomX, randomY));
-        soldiers.addSoldierToGroup(soldier);
+        Instantiate(soldierPrefab);
+        spawnedSoldiers++;
     }
-
+    public int getSpawnedSoldiers()
+    {
+        return spawnedSoldiers;
+    }
+    public void setSpawnedSoldiers(int x)
+    {
+        spawnedSoldiers = x;
+    }
     /*private void OnTriggerEnter2D(Collider2D collision)
     {
 
