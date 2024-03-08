@@ -128,9 +128,8 @@ public class UIManagerScript : MonoBehaviour
                 }
                 break;
             default:
-
-                break;
                 Debug.Log(GameData.gold);
+                break;
         }
     }
 
